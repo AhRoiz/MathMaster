@@ -20,22 +20,45 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const wallOfFameData = {
   founders: [
     { 
-      name: "Nama Kamu", 
+      name: "Ahmad Rofi' Izzulhaq", 
       role: "The Architect & Founder", 
-      desc: "Pencetus ide, pengembang utama, dan otak di balik MathMaster.",
+      desc: "Pengembang utama, kurator, dan otak di balik MathMaster.",
       color: "from-amber-400 to-orange-600",
-      image: "/profile.jpg" 
-    }
+      image: "fotoahmad.jpeg" 
+    },
+    { 
+      name: "M. Nabil Fabian", 
+      role: "Founder", 
+      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
+      color: "from-amber-400 to-orange-600",
+      image: "nabil.jpeg" 
+    },
+    { 
+      name: "Ja'far Anafa Pulungan", 
+      role: "Founder", 
+      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
+      color: "from-amber-400 to-orange-600",
+      image: "jafar.jpeg" 
+    },
+    { 
+      name: "Aldi Ahidin", 
+      role: "Founder", 
+      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
+      color: "from-amber-400 to-orange-600",
+      image: "aldi.jpeg" 
+    },
+
   ],
   contributors: [
-    { name: "Komunitas Matematika ID", role: "Content Partner", desc: "Menyumbangkan kurikulum SD & SMP." },
-    { name: "Budi Santoso", role: "Video Contributor", desc: "Donasi video pembahasan Aljabar." },
-    { name: "Siti Aminah", role: "Video Contributor", desc: "Donasi video Geometri." },
+    { name: "Sedang Dicari !", role: "Content Partner", desc: "Menyumbangkan kurikulum SD/SMP/SMA." },
+    { name: "Sedang Dicari !", role: "Video Contributor", desc: "Donasi video pembahasan materi." },
+    { name: "Sedang Dicari !", role: "Learning Contributor", desc: "Donasi materi matematika." },
   ],
   tutors: [
-    { name: "Kak Andi", role: "Super Tutor", desc: "Spesialisasi: Kalkulus & Trigonometri." },
-    { name: "Kak Rina", role: "Super Tutor", desc: "Spesialisasi: Matematika Dasar SD." },
-    { name: "Kak Doni", role: "Mentor", desc: "Membimbing persiapan Olimpiade." },
+    { name: "Sedang Dicari !", role: "Super Tutor", desc: "Spesialisasi: Materi Sekolah Dasar" },
+    { name: "Sedang Dicari !", role: "Super Tutor", desc: "Spesialisasi: Materi Sekolah Menengah" },
+    { name: "Sedang Dicari !", role: "Mentor", desc: "Membimbing anak penyandang disabilitas." },
+    { name: "Sedang Dicari !", role: "Mentor", desc: "Membimbing persiapan olimpiade." },
   ]
 };
 
