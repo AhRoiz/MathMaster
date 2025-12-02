@@ -17,11 +17,9 @@ const phoneNumber = "6281234567890"; // GANTI NOMOR WA KAMU
 // Saya jadikan komentar dulu agar tidak ERROR di preview editor ini.
 // SAAT DI VS CODE / NETLIFY: Hapus tanda // di depan baris berikut:
 
-// const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
-// Untuk sementara (agar preview jalan), kita set kosong:
-const GEMINI_API_KEY = "";
-
+// Untuk sementara (agar preview jalan), kita set kosong
 /* =============================================================================
   DATA WALL OF FAME
   ============================================================================= */
