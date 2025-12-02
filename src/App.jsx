@@ -281,7 +281,7 @@ export default function MathMaster() {
     }
   };
 
-  // --- LOGIKA CHAT DENGAN GEMINI API (FINAL FIX: MODEL LATEST) ---
+  // --- LOGIKA CHAT DENGAN GEMINI API (FINAL FIX: MODEL) ---
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!inputMessage.trim()) return;
@@ -299,7 +299,7 @@ export default function MathMaster() {
 
     try {
       // KITA GUNAKAN 'gemini-1.5-flash-latest' AGAR LEBIH AMAN DARI VERSIONING
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`, {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
