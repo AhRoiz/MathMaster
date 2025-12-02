@@ -14,13 +14,14 @@ const phoneNumber = "6281234567890"; // GANTI NOMOR WA KAMU
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
-// LOGIKA CHAT DENGAN GEMINI API (REVISI MODEL STABIL)
+// LOGIKA CHAT DENGAN GEMINI API (FINAL FIX)
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!inputMessage.trim()) return;
 
+    // Cek Kunci
     if (!GEMINI_API_KEY) {
-      alert("ERROR: API Key belum terbaca. Pastikan file .env sudah benar dan server direstart.");
+      alert("ERROR: API Key kosong. Pastikan file .env ada isinya dan server sudah direstart.");
       return;
     }
 
@@ -30,8 +31,9 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
     setIsLoading(true);
 
     try {
-      // Gunakan KE 'gemini-pro' AGAR LEBIH STABIL
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+      // KITA KEMBALI KE 'gemini-1.5-flash' (Model Standar Saat Ini)
+      // Pastikan API Key kamu di .env tidak ada spasi!
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -43,7 +45,7 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
       
       if (data.error) {
         console.error("Google API Error:", data.error);
-        throw new Error(`Google menolak: ${data.error.message}`);
+        throw new Error(`Google Error: ${data.error.message}`);
       }
 
       if (!data.candidates || !data.candidates[0].content) {
@@ -56,7 +58,7 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
     } catch (error) {
       console.error("App Error:", error);
       alert(`Gagal: ${error.message}`);
-      setChatMessages(prev => [...prev, { role: 'ai', text: "Maaf, ada kendala koneksi ke otak AI." }]);
+      setChatMessages(prev => [...prev, { role: 'ai', text: "Maaf, AI sedang lelah. Coba lagi nanti." }]);
     } finally {
       setIsLoading(false);
     }
