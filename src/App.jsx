@@ -7,58 +7,49 @@ import {
   LogIn, LogOut, User, Edit3, Lock, Send, Bot, Loader2
 } from 'lucide-react';
 
-/*KONFIGURASI UTAMA*/
-const phoneNumber = "6282120648685"; // GANTI NOMOR WA KAMU
+/* =============================================================================
+  KONFIGURASI UTAMA
+  ============================================================================= */
+const phoneNumber = "6281234567890"; // GANTI NOMOR WA KAMU
 
-const GEMINI_API_KEY = (import.meta && import.meta.env) ? import.meta.env.VITE_GEMINI_API_KEY : "";
+// --- [PENTING: KONFIGURASI API KEY] ---
+// Baris di bawah ini digunakan untuk mengambil API Key dari .env di Laptop/Netlify.
+// Saya jadikan komentar dulu agar tidak ERROR di preview editor ini.
+// SAAT DI VS CODE / NETLIFY: Hapus tanda // di depan baris berikut:
 
-/* DATA WALL OF FAME */
+// const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+
+// Untuk sementara (agar preview jalan), kita set kosong:
+const GEMINI_API_KEY = "";
+
+/* =============================================================================
+  DATA WALL OF FAME
+  ============================================================================= */
 const wallOfFameData = {
   founders: [
     { 
-      name: "Ahmad Rofi' Izzulhaq", 
+      name: "Nama Kamu", 
       role: "The Architect & Founder", 
-      desc: "Pengembang utama, kurator, dan otak di balik MathMaster.",
+      desc: "Pencetus ide, pengembang utama, dan otak di balik MathMaster.",
       color: "from-amber-400 to-orange-600",
-      image: "fotoahmad.jpeg" 
-    },
-    { 
-      name: "M. Nabil Fabian", 
-      role: "Founder", 
-      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
-      color: "from-amber-400 to-orange-600",
-      image: "nabil.jpeg" 
-    },
-    { 
-      name: "Ja'far Anafa Pulungan", 
-      role: "Founder", 
-      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
-      color: "from-amber-400 to-orange-600",
-      image: "jafar.jpeg" 
-    },
-    { 
-      name: "Aldi Ahidin", 
-      role: "Founder", 
-      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
-      color: "from-amber-400 to-orange-600",
-      image: "aldi.jpeg" 
-    },
-
+      image: "/profile.jpg" 
+    }
   ],
   contributors: [
-    { name: "Sedang Dicari !", role: "Content Partner", desc: "Menyumbangkan kurikulum SD/SMP/SMA." },
-    { name: "Sedang Dicari !", role: "Video Contributor", desc: "Donasi video pembahasan materi." },
-    { name: "Sedang Dicari !", role: "Designer Artist", desc: "Membuat gambar agar lebih menarik anak-anak" },
+    { name: "Komunitas Matematika ID", role: "Content Partner", desc: "Menyumbangkan kurikulum SD & SMP." },
+    { name: "Budi Santoso", role: "Video Contributor", desc: "Donasi video pembahasan Aljabar." },
+    { name: "Siti Aminah", role: "Video Contributor", desc: "Donasi video Geometri." },
   ],
   tutors: [
-    { name: "Sedang Dicari !", role: "Super Tutor", desc: "Mengajar Materi Sekolah Dasar/Menengah" },
-    { name: "Sedang Dicari !", role: "Super Tutor", desc: "Membantu mengejar anak yang tertinggal materi" },
-    { name: "Sedang Dicari !", role: "Mentor", desc: "Membimbing anak penyandang disabilitas." },
-    { name: "Sedang Dicari !", role: "Mentor", desc: "Membimbing persiapan olimpiade." },
+    { name: "Kak Andi", role: "Super Tutor", desc: "Spesialisasi: Kalkulus & Trigonometri." },
+    { name: "Kak Rina", role: "Super Tutor", desc: "Spesialisasi: Matematika Dasar SD." },
+    { name: "Kak Doni", role: "Mentor", desc: "Membimbing persiapan Olimpiade." },
   ]
 };
 
-/* DATA KURIKULUM + SOAL LATIHAN (QUIZ) */
+/* =============================================================================
+  DATA KURIKULUM + SOAL LATIHAN (QUIZ)
+  ============================================================================= */
 const curriculumData = {
   SD: {
     theme: "from-green-400 to-emerald-600",
@@ -76,9 +67,7 @@ const curriculumData = {
             title: "Mengenal Bilangan Cacah",
             desc: "Membaca dan menulis lambang bilangan 1-20 hingga 99.",
             difficulty: "Beginner",
-            resources: [
-              {type : "youtube", title : " Belajar angka", url :"https://youtu.be/2gjsxrhwYaE?si=0wPJ9qYrn_V_123u"}
-                ],
+            resources: [],
             quiz: [
               { question: "Lambang bilangan dari sepuluh adalah...", options: ["1", "10", "100", "01"], correctAnswer: 1 },
               { question: "Angka setelah 5 adalah...", options: ["4", "7", "6", "3"], correctAnswer: 2 },
@@ -155,6 +144,7 @@ const curriculumData = {
         nodes: [
           { 
             id: "smp7-1", title: "Bilangan & Himpunan", desc: "Bilangan bulat & Diagram Venn.", difficulty: "Beginner", resources: [],
+            // CONTOH SOAL SMP
             quiz: [
               { question: "Hasil dari -5 + 12 adalah...", options: ["-7", "7", "17", "-17"], correctAnswer: 1 },
               { question: "Kumpulan hewan berkaki empat adalah contoh...", options: ["Himpunan", "Bukan Himpunan", "Bilangan", "Aljabar"], correctAnswer: 0 }
@@ -202,6 +192,7 @@ const curriculumData = {
         nodes: [
           { 
             id: "sma10-1", title: "Eksponen & Logaritma", desc: "Sifat pangkat.", difficulty: "Medium", resources: [],
+            // CONTOH SOAL SMA
             quiz: [
               { question: "2 pangkat 3 sama dengan...", options: ["6", "8", "9", "5"], correctAnswer: 1 },
               { question: "Invers dari eksponen adalah...", options: ["Logaritma", "Matriks", "Vektor", "Limit"], correctAnswer: 0 }
@@ -237,7 +228,7 @@ const curriculumData = {
 };
 
 export default function MathMaster() {
-  const [activePage, setActivePage] = useState("home"); // 'home', 'practice', 'wall'
+  const [activePage, setActivePage] = useState("home"); 
   const [activeLevel, setActiveLevel] = useState("SD");
   const [activeClass, setActiveClass] = useState(1);
   const [selectedNode, setSelectedNode] = useState(null);
@@ -247,12 +238,10 @@ export default function MathMaster() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [completedNodes, setCompletedNodes] = useState({});
 
-  // STATE LOGIN
-  const [user, setUser] = useState(null); // { name: "Budi", role: "student" | "mentor" }
+  // STATE LOGIN & CHAT
+  const [user, setUser] = useState(null); 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [loginForm, setLoginForm] = useState({ name: "", role: "student" });
-
-  // STATE CHAT AI
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState([
     { role: 'ai', text: 'Halo! Saya AI MathMaster. Ada soal matematika yang bikin bingung? Tanyakan saja di sini!' }
@@ -308,17 +297,20 @@ export default function MathMaster() {
     e.preventDefault();
     if (!inputMessage.trim()) return;
 
+    // Cek dulu apakah kunci ada sebelum kirim
+    if (!GEMINI_API_KEY) {
+      alert("ERROR: API Key tidak ditemukan! Pastikan Anda sudah mengatur 'VITE_GEMINI_API_KEY' di Netlify Environment Variables dan melakukan Redeploy (Clear Cache).");
+      return;
+    }
+
     const newUserMsg = { role: 'user', text: inputMessage };
     setChatMessages(prev => [...prev, newUserMsg]);
     setInputMessage("");
     setIsLoading(true);
 
     try {
-      if (!GEMINI_API_KEY) {
-        throw new Error("API Key belum disetting!");
-      }
-
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+      // Menggunakan model 'gemini-1.5-flash' yang lebih baru & stabil
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -329,15 +321,23 @@ export default function MathMaster() {
       const data = await response.json();
       
       if (data.error) {
-        throw new Error(data.error.message);
+        // Tampilkan pesan error asli dari Google di Console dan Alert
+        console.error("Google API Error:", data.error);
+        throw new Error(`Google menolak: ${data.error.message}`);
+      }
+
+      if (!data.candidates || !data.candidates[0].content) {
+        throw new Error("Tidak ada jawaban dari AI. Coba pertanyaan lain.");
       }
 
       const aiResponseText = data.candidates[0].content.parts[0].text;
       setChatMessages(prev => [...prev, { role: 'ai', text: aiResponseText }]);
 
     } catch (error) {
-      console.error("Error AI:", error);
-      setChatMessages(prev => [...prev, { role: 'ai', text: "Maaf, fitur AI sedang gangguan atau API Key belum disetting. Cek file .env Anda." }]);
+      console.error("App Error:", error);
+      // Tampilkan Alert agar user tahu error spesifiknya apa
+      alert(`Gagal mengirim pesan: ${error.message}`);
+      setChatMessages(prev => [...prev, { role: 'ai', text: "Terjadi kesalahan. Cek notifikasi error di atas." }]);
     } finally {
       setIsLoading(false);
     }
@@ -376,7 +376,6 @@ export default function MathMaster() {
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
-  // LOGIKA KUIS
   const startQuiz = (node) => {
     if (node.quiz && node.quiz.length > 0) {
       setQuizNode(node);
@@ -506,152 +505,88 @@ export default function MathMaster() {
             </div>
             {/* ROADMAP TREE */}
             <div className="relative">
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-36 w-1 md:-ml-0.5 bg-slate-800 rounded-full"><div className={`h-full w-full bg-gradient-to-b ${levelData.theme} opacity-30`}></div></div>
-              
+              <div className="absolute left-4 md:left-1/2 top-0 bottom-64 w-1 md:-ml-0.5 bg-slate-800 rounded-full"><div className={`h-full w-full bg-gradient-to-b ${levelData.theme} opacity-30`}></div></div>
               <div className="space-y-12">
                 {currentNodes.map((node, index) => {
                   const isCompleted = completedNodes[node.id];
-                  
                   return (
                     <div key={node.id} className={`relative flex items-center md:justify-between ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                       <div className="hidden md:block w-5/12"></div>
-                      
                       <div className={`absolute left-4 md:left-1/2 w-8 h-8 -ml-4 rounded-full border-4 z-10 flex items-center justify-center transition-all ${isCompleted ? 'border-emerald-500 bg-emerald-500 scale-110 shadow-[0_0_15px_rgba(16,185,129,0.5)]' : 'border-slate-900 bg-slate-700'}`}>
                         {isCompleted ? <CheckCircle className="w-4 h-4 text-white" /> : <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${levelData.theme}`}></div>}
                       </div>
-
                       <div className="ml-12 md:ml-0 w-full md:w-5/12">
-                        <button 
-                          onClick={() => setSelectedNode(node)} 
-                          className="w-full text-left group relative block"
-                        >
+                        <button onClick={() => setSelectedNode(node)} className="w-full text-left group relative block">
                           <div className={`absolute inset-0 rounded-2xl transform transition-transform group-hover:-translate-y-1 group-hover:shadow-xl border ${isCompleted ? 'bg-emerald-900/20 border-emerald-500/50 shadow-lg shadow-emerald-900/10' : 'bg-gradient-to-r from-slate-800 to-slate-800/50 border-slate-700 group-hover:border-cyan-500/50'}`}></div>
-                          
                           <div className="relative p-6">
                             <div className="absolute top-4 right-4 z-20 flex gap-2">
-                              {/* MENTOR ONLY BUTTON */}
-                              {user?.role === 'mentor' && (
-                                <div className="p-2 rounded-full bg-purple-500/20 text-purple-400" title="Edit Materi (Khusus Mentor)">
-                                  <Edit3 className="w-4 h-4" />
-                                </div>
-                              )}
-                              <button
-                                onClick={(e) => { e.stopPropagation(); toggleCompletion(node.id); }}
-                                className={`p-2 rounded-full transition-all ${isCompleted ? 'text-emerald-400 bg-emerald-900/50 hover:bg-emerald-900' : 'text-slate-600 hover:text-slate-300 hover:bg-slate-700'}`}
-                                title={isCompleted ? "Tandai Belum Selesai" : "Tandai Selesai"}
-                              >
-                                {isCompleted ? <CheckSquare className="w-6 h-6" /> : <Square className="w-6 h-6" />}
-                              </button>
+                              {user?.role === 'mentor' && (<div className="p-2 rounded-full bg-purple-500/20 text-purple-400" title="Edit Materi"><Edit3 className="w-4 h-4" /></div>)}
+                              <button onClick={(e) => { e.stopPropagation(); toggleCompletion(node.id); }} className={`p-2 rounded-full transition-all ${isCompleted ? 'text-emerald-400 bg-emerald-900/50 hover:bg-emerald-900' : 'text-slate-600 hover:text-slate-300 hover:bg-slate-700'}`} title={isCompleted ? "Tandai Belum Selesai" : "Tandai Selesai"}>{isCompleted ? <CheckSquare className="w-6 h-6" /> : <Square className="w-6 h-6" />}</button>
                             </div>
-
                             <div className="flex justify-between items-start mb-2 pr-16">
                               <span className={`text-xs font-bold px-2 py-1 rounded ${isCompleted ? 'bg-emerald-500 text-white' : 'bg-slate-900/50 text-slate-300'} border border-slate-700`}>Step {index + 1}</span>
                               <span className={`text-xs font-bold uppercase tracking-wider ${node.difficulty === 'Beginner' ? 'text-green-400' : 'text-yellow-400'}`}>{node.difficulty}</span>
                             </div>
                             <h3 className={`text-xl font-bold mb-1 transition-colors ${isCompleted ? 'text-emerald-400' : 'text-white group-hover:text-cyan-400'}`}>{node.title}</h3>
                             <p className="text-sm text-slate-400 mb-4">{node.desc}</p>
-                            <div className={`flex items-center gap-2 text-xs font-medium transition-colors ${isCompleted ? 'text-emerald-500' : 'text-slate-500 group-hover:text-slate-300'}`}>
-                              <span>{isCompleted ? 'Materi Selesai!' : 'Klik untuk Belajar'}</span>
-                              <ChevronRight className="w-4 h-4 ml-auto" />
-                            </div>
+                            <div className={`flex items-center gap-2 text-xs font-medium transition-colors ${isCompleted ? 'text-emerald-500' : 'text-slate-500 group-hover:text-slate-300'}`}><span>{isCompleted ? 'Materi Selesai!' : 'Klik untuk Belajar'}</span><ChevronRight className="w-4 h-4 ml-auto" /></div>
                           </div>
                         </button>
                       </div>
                     </div>
                   );
                 })}
-                
                 <div className="relative flex justify-center pt-16 pb-8 animate-fade-in-up">
                   <div className="flex flex-col items-center gap-4 z-10 relative group cursor-default">
                     <div className="absolute inset-0 bg-yellow-500/20 blur-3xl rounded-full scale-150 animate-pulse"></div>
                     <div className="w-24 h-24 rounded-full bg-gradient-to-b from-yellow-300 to-yellow-600 p-1 shadow-2xl transform group-hover:scale-110 transition-transform duration-500 flex items-center justify-center border-4 border-yellow-200">
-                      <div className="w-full h-full rounded-full bg-yellow-500 flex items-center justify-center border border-yellow-600 shadow-inner">
-                        <Award className="w-12 h-12 text-white drop-shadow-md" />
-                      </div>
+                      <div className="w-full h-full rounded-full bg-yellow-500 flex items-center justify-center border border-yellow-600 shadow-inner"><Award className="w-12 h-12 text-white drop-shadow-md" /></div>
                     </div>
-                    <div className="text-center">
-                      <h4 className="text-2xl font-bold text-yellow-400 drop-shadow-lg tracking-wide uppercase">Garis Finish</h4>
-                      <p className="text-slate-400 text-sm">Kamu telah melihat semua peta!</p>
-                    </div>
+                    <div className="text-center"><h4 className="text-2xl font-bold text-yellow-400 drop-shadow-lg tracking-wide uppercase">Garis Finish</h4><p className="text-slate-400 text-sm">Kamu telah melihat semua peta!</p></div>
                   </div>
                 </div>
-
               </div>
             </div>
           </section>
         </>
       )}
 
-      {/* --- HALAMAN LATIHAN SOAL (PRACTICE) --- */}
+      {/* --- HALAMAN LATIHAN SOAL --- */}
       {activePage === 'practice' && (
         <section className="pt-32 pb-20 px-6 max-w-6xl mx-auto min-h-screen animate-fade-in-up">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-6">
-              <PenTool className="w-4 h-4" />
-              <span>Zona Ujian & Latihan</span>
-            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-6"><PenTool className="w-4 h-4" /><span>Zona Ujian & Latihan</span></div>
             <h1 className="text-5xl font-bold mb-6">Uji <span className="text-emerald-400">Kemampuanmu</span></h1>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">Pilih materi sesuai kelasmu dan kerjakan soal latihan interaktif untuk mengasah pemahaman.</p>
           </div>
-
           <div className="bg-slate-800/50 border border-slate-700 p-6 rounded-2xl mb-12 flex flex-col md:flex-row gap-6 justify-center items-center">
-             <div className="flex gap-2">
-                {Object.keys(curriculumData).map((level) => (
-                  <button key={level} onClick={() => handleLevelChange(level)} className={`px-4 py-2 rounded-lg font-bold text-sm transition-all ${activeLevel === level ? 'bg-emerald-500 text-white shadow-lg' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}>{level}</button>
-                ))}
-             </div>
-             <div className="relative">
-                <select value={activeClass} onChange={(e) => setActiveClass(Number(e.target.value))} className="bg-slate-900 border border-slate-600 text-white text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 pr-8">
-                  {getClassOptions().map(num => <option key={num} value={num}>Kelas {num}</option>)}
-                </select>
-             </div>
+             <div className="flex gap-2">{Object.keys(curriculumData).map((level) => (<button key={level} onClick={() => handleLevelChange(level)} className={`px-4 py-2 rounded-lg font-bold text-sm transition-all ${activeLevel === level ? 'bg-emerald-500 text-white shadow-lg' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}>{level}</button>))}</div>
+             <div className="relative"><select value={activeClass} onChange={(e) => setActiveClass(Number(e.target.value))} className="bg-slate-900 border border-slate-600 text-white text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 pr-8">{getClassOptions().map(num => <option key={num} value={num}>Kelas {num}</option>)}</select></div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentNodes.map((node, idx) => (
               <div key={idx} className="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-emerald-500/50 transition-all flex flex-col h-full group">
                 <div className="flex justify-between items-start mb-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${levelData.theme} opacity-80 group-hover:opacity-100 transition-opacity`}>
-                    <PenTool className="text-white w-6 h-6" />
-                  </div>
-                  {node.quiz && node.quiz.length > 0 ? (
-                    <span className="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-1 rounded font-bold">Siap Dikerjakan</span>
-                  ) : (
-                    <span className="bg-slate-700 text-slate-400 text-xs px-2 py-1 rounded font-bold">Belum Tersedia</span>
-                  )}
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${levelData.theme} opacity-80 group-hover:opacity-100 transition-opacity`}><PenTool className="text-white w-6 h-6" /></div>
+                  {node.quiz && node.quiz.length > 0 ? (<span className="bg-emerald-500/10 text-emerald-400 text-xs px-2 py-1 rounded font-bold">Siap Dikerjakan</span>) : (<span className="bg-slate-700 text-slate-400 text-xs px-2 py-1 rounded font-bold">Belum Tersedia</span>)}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{node.title}</h3>
                 <p className="text-slate-400 text-sm mb-6 flex-grow">{node.desc}</p>
-                
-                {/* BUTTON START QUIZ (CONDITIONAL FOR STUDENT) */}
-                <button 
-                  onClick={() => startQuiz(node)}
-                  disabled={!node.quiz || node.quiz.length === 0}
-                  className={`w-full py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2
-                    ${node.quiz && node.quiz.length > 0 
-                      ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-900/20' 
-                      : 'bg-slate-700 text-slate-500 cursor-not-allowed'}
-                  `}
-                >
-                  {node.quiz && node.quiz.length > 0 ? 'Mulai Latihan' : 'Segera Hadir'}
-                </button>
+                <button onClick={() => startQuiz(node)} disabled={!node.quiz || node.quiz.length === 0} className={`w-full py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 ${node.quiz && node.quiz.length > 0 ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-900/20' : 'bg-slate-700 text-slate-500 cursor-not-allowed'}`}>{node.quiz && node.quiz.length > 0 ? 'Mulai Latihan' : 'Segera Hadir'}</button>
               </div>
             ))}
           </div>
         </section>
       )}
 
-      {/* --- HALAMAN WALL OF FAME (FULL VERSION) --- */}
+      {/* --- HALAMAN WALL OF FAME --- */}
       {activePage === 'wall' && (
         <section className="pt-32 pb-20 px-6 max-w-6xl mx-auto min-h-screen animate-fade-in-up">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-sm font-medium mb-6">
-              <Crown className="w-4 h-4" /><span>Hall of Heroes</span>
-            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-sm font-medium mb-6"><Crown className="w-4 h-4" /><span>Hall of Heroes</span></div>
             <h1 className="text-5xl font-bold mb-6">Wall of <span className="text-yellow-400">Fame</span></h1>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">Dedikasi untuk para pahlawan edukasi.</p>
           </div>
-
           <div className="mb-20">
             <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4"><Medal className="text-yellow-500" /> The Architect</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -662,15 +597,12 @@ export default function MathMaster() {
                     <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${person.color} p-1 mb-6 shadow-xl overflow-hidden relative z-10`}>
                       {person.image ? <img src={person.image} alt={person.name} className="w-full h-full object-cover rounded-full border-2 border-slate-900" /> : <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center"><BrainCircuit className="w-10 h-10 text-white" /></div>}
                     </div>
-                    <h4 className="text-2xl font-bold text-white mb-1 relative z-10">{person.name}</h4>
-                    <span className="text-yellow-400 font-medium text-sm tracking-widest uppercase mb-4 relative z-10">{person.role}</span>
-                    <p className="text-slate-400 text-sm leading-relaxed relative z-10">{person.desc}</p>
+                    <h4 className="text-2xl font-bold text-white mb-1 relative z-10">{person.name}</h4><span className="text-yellow-400 font-medium text-sm tracking-widest uppercase mb-4 relative z-10">{person.role}</span><p className="text-slate-400 text-sm leading-relaxed relative z-10">{person.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
           <div className="mb-20">
              <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4"><Heart className="text-pink-500" /> Komunitas & Kontributor</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -682,7 +614,6 @@ export default function MathMaster() {
               ))}
             </div>
           </div>
-
           <div className="mb-20">
              <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4"><GraduationCap className="text-cyan-500" /> Para Mentor (Tutor)</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -701,65 +632,41 @@ export default function MathMaster() {
         </section>
       )}
 
-      {/* FLOATING ACTION MENU */}
+      {/* FLOATING ACTION */}
       <div className="fixed bottom-8 right-8 z-40 flex flex-col items-end gap-3">
         {isMenuOpen && (
           <div className="flex flex-col gap-3 animate-fade-in-up">
              <button onClick={() => handleWhatsAppClick("tutor")} className="flex items-center gap-3 px-5 py-3 bg-white text-slate-900 font-bold rounded-full shadow-lg hover:bg-slate-200 transition-colors"><span>Cari Tutor Privat</span><UserPlus className="w-5 h-5" /></button>
-             {/* TOMBOL AI CHAT */}
              <button onClick={() => { setIsChatOpen(true); setIsMenuOpen(false); }} className="flex items-center gap-3 px-5 py-3 bg-white text-slate-900 font-bold rounded-full shadow-lg hover:bg-slate-200 transition-colors"><span>Tanya Soal (AI)</span><MessageCircle className="w-5 h-5" /></button>
           </div>
         )}
         <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 ${isMenuOpen ? 'bg-red-500 rotate-45' : 'bg-cyan-500'}`}><span className="text-white font-bold text-2xl">{isMenuOpen ? <X /> : <HelpCircle />}</span></button>
       </div>
 
-      {/* --- MODAL CHAT AI --- */}
+      {/* CHAT AI MODAL */}
       {isChatOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm" onClick={() => setIsChatOpen(false)}></div>
           <div className="relative w-full max-w-lg bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col h-[600px]">
-            {/* Header */}
             <div className="px-6 py-4 border-b border-slate-700 flex justify-between items-center bg-slate-900">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400">
-                  <Bot className="w-6 h-6" />
-                </div>
+                <div className="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400"><Bot className="w-6 h-6" /></div>
                 <div><h3 className="text-lg font-bold text-white">AI Tutor MathMaster</h3><p className="text-slate-400 text-xs">Powered by Gemini</p></div>
               </div>
               <button onClick={() => setIsChatOpen(false)} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
             </div>
-
-            {/* Chat Area */}
             <div className="flex-1 p-6 overflow-y-auto space-y-4 bg-slate-800/50">
               {chatMessages.map((msg, idx) => (
                 <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed ${msg.role === 'user' ? 'bg-cyan-600 text-white rounded-br-none' : 'bg-slate-700 text-slate-200 rounded-bl-none'}`}>
-                    {msg.text}
-                  </div>
+                  <div className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed ${msg.role === 'user' ? 'bg-cyan-600 text-white rounded-br-none' : 'bg-slate-700 text-slate-200 rounded-bl-none'}`}>{msg.text}</div>
                 </div>
               ))}
-              {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-slate-700 p-4 rounded-2xl rounded-bl-none flex items-center gap-2 text-slate-400 text-sm">
-                    <Loader2 className="w-4 h-4 animate-spin" /> Sedang berpikir...
-                  </div>
-                </div>
-              )}
+              {isLoading && (<div className="flex justify-start"><div className="bg-slate-700 p-4 rounded-2xl rounded-bl-none flex items-center gap-2 text-slate-400 text-sm"><Loader2 className="w-4 h-4 animate-spin" /> Sedang berpikir...</div></div>)}
               <div ref={chatEndRef}></div>
             </div>
-
-            {/* Input Area */}
             <form onSubmit={handleSendMessage} className="p-4 bg-slate-900 border-t border-slate-700 flex gap-3">
-              <input 
-                type="text" 
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                placeholder="Ketik soal matematika di sini..."
-                className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-cyan-500 outline-none"
-              />
-              <button type="submit" disabled={isLoading || !inputMessage.trim()} className="p-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                <Send className="w-5 h-5" />
-              </button>
+              <input type="text" value={inputMessage} onChange={(e) => setInputMessage(e.target.value)} placeholder="Ketik soal matematika di sini..." className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-cyan-500 outline-none" />
+              <button type="submit" disabled={isLoading || !inputMessage.trim()} className="p-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-colors"><Send className="w-5 h-5" /></button>
             </form>
           </div>
         </div>
@@ -861,41 +768,15 @@ export default function MathMaster() {
             <button onClick={() => setIsLoginModalOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Masuk ke MathMaster</h2>
             <form onSubmit={handleLogin} className="space-y-4">
-              <div>
-                <label className="block text-slate-400 text-sm mb-2">Nama Lengkap</label>
-                <input 
-                  type="text" 
-                  value={loginForm.name}
-                  onChange={(e) => setLoginForm({...loginForm, name: e.target.value})}
-                  className="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all"
-                  placeholder="Contoh: Budi Santoso"
-                  required 
-                />
-              </div>
+              <div><label className="block text-slate-400 text-sm mb-2">Nama Lengkap</label><input type="text" value={loginForm.name} onChange={(e) => setLoginForm({...loginForm, name: e.target.value})} className="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all" placeholder="Contoh: Budi Santoso" required /></div>
               <div>
                 <label className="block text-slate-400 text-sm mb-2">Masuk Sebagai</label>
                 <div className="grid grid-cols-2 gap-4">
-                  <button 
-                    type="button"
-                    onClick={() => setLoginForm({...loginForm, role: 'student'})}
-                    className={`p-3 rounded-lg border flex flex-col items-center gap-2 transition-all ${loginForm.role === 'student' ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-500'}`}
-                  >
-                    <User className="w-6 h-6" />
-                    <span className="text-sm font-bold">Siswa</span>
-                  </button>
-                  <button 
-                    type="button"
-                    onClick={() => setLoginForm({...loginForm, role: 'mentor'})}
-                    className={`p-3 rounded-lg border flex flex-col items-center gap-2 transition-all ${loginForm.role === 'mentor' ? 'bg-purple-500/20 border-purple-500 text-purple-400' : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-500'}`}
-                  >
-                    <GraduationCap className="w-6 h-6" />
-                    <span className="text-sm font-bold">Mentor</span>
-                  </button>
+                  <button type="button" onClick={() => setLoginForm({...loginForm, role: 'student'})} className={`p-3 rounded-lg border flex flex-col items-center gap-2 transition-all ${loginForm.role === 'student' ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-500'}`}><User className="w-6 h-6" /><span className="text-sm font-bold">Siswa</span></button>
+                  <button type="button" onClick={() => setLoginForm({...loginForm, role: 'mentor'})} className={`p-3 rounded-lg border flex flex-col items-center gap-2 transition-all ${loginForm.role === 'mentor' ? 'bg-purple-500/20 border-purple-500 text-purple-400' : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-500'}`}><GraduationCap className="w-6 h-6" /><span className="text-sm font-bold">Mentor</span></button>
                 </div>
               </div>
-              <button type="submit" className="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg shadow-lg transition-all mt-4">
-                Mulai Belajar
-              </button>
+              <button type="submit" className="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg shadow-lg transition-all mt-4">Mulai Belajar</button>
             </form>
           </div>
         </div>
