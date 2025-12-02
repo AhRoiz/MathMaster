@@ -11,8 +11,9 @@ import {
   KONFIGURASI UTAMA
   ============================================================================= */
 const phoneNumber = "6281234567890"; // GANTI NOMOR WA KAMU
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
+// --- [AMAN] MENGAMBIL API KEY DARI ENVIRONMENT VARIABLES ---
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 /* =============================================================================
   DATA WALL OF FAME
@@ -267,12 +268,9 @@ export default function MathMaster() {
   const handleLogin = (e) => {
     e.preventDefault();
     if (!loginForm.name) return alert("Nama harus diisi!");
-    
-    // Simpan user ke state dan local storage
     setUser(loginForm);
     localStorage.setItem('mathmaster_user', JSON.stringify(loginForm));
     setIsLoginModalOpen(false);
-    // Reset form
     setLoginForm({ name: "", role: "student" });
   };
 
@@ -284,7 +282,7 @@ export default function MathMaster() {
     }
   };
 
-  // LOGIKA CHAT DENGAN GEMINI API (VERSI 1.5 FLASH)
+  // --- LOGIKA CHAT DENGAN GEMINI API (FINAL FIX: MODEL LATEST) ---
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!inputMessage.trim()) return;
@@ -301,8 +299,8 @@ export default function MathMaster() {
     setIsLoading(true);
 
     try {
-      // Menggunakan model 'gemini-1.5-flash' yang lebih baru & stabil
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+      // KITA GUNAKAN 'gemini-1.5-flash-latest' AGAR LEBIH AMAN DARI VERSIONING
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -312,9 +310,9 @@ export default function MathMaster() {
 
       const data = await response.json();
       
+      // DEBUG: Log error di console browser (F12) untuk inspeksi
       if (data.error) {
-        // Tampilkan pesan error asli dari Google di Console dan Alert
-        console.error("Google API Error:", data.error);
+        console.error("Google API Error Detail:", data.error);
         throw new Error(`Google menolak: ${data.error.message}`);
       }
 
@@ -327,7 +325,6 @@ export default function MathMaster() {
 
     } catch (error) {
       console.error("App Error:", error);
-      // Tampilkan Alert agar user tahu error spesifiknya apa
       alert(`Gagal mengirim pesan: ${error.message}`);
       setChatMessages(prev => [...prev, { role: 'ai', text: "Terjadi kesalahan. Cek notifikasi error di atas." }]);
     } finally {
@@ -368,7 +365,6 @@ export default function MathMaster() {
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
-  // LOGIKA KUIS
   const startQuiz = (node) => {
     if (node.quiz && node.quiz.length > 0) {
       setQuizNode(node);
@@ -503,6 +499,7 @@ export default function MathMaster() {
               <div className="space-y-12">
                 {currentNodes.map((node, index) => {
                   const isCompleted = completedNodes[node.id];
+                  
                   return (
                     <div key={node.id} className={`relative flex items-center md:justify-between ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                       <div className="hidden md:block w-5/12"></div>
