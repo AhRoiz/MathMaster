@@ -9,7 +9,7 @@
 </p>
 
 <p>
-<a href="https://www.google.com/search?q=https://mathmaster.vercel.app"><strong>🌐 Lihat Demo Live</strong></a>
+<a href="https://www.google.com/search?q=https://mathmasterindonesia.vercel.app"><strong>🌐 Lihat Demo Live</strong></a>
 ·
 <a href="https://www.google.com/search?q=https://github.com/AhRoiz/MathMaster/issues">🪲 Laporkan Bug</a>
 ·
