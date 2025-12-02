@@ -7,16 +7,11 @@ import {
   LogIn, LogOut, User, Edit3, Lock, Send, Bot, Loader2
 } from 'lucide-react';
 
-/* =============================================================================
-  KONFIGURASI UTAMA
-  ============================================================================= */
-const phoneNumber = "6281234567890"; // GANTI NOMOR WA KAMU
+const phoneNumber = "6282120648685"; 
 
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
-/* =============================================================================
-  DATA WALL OF FAME
-  ============================================================================= */
+/* DATA WALL OF FAME */
 const wallOfFameData = {
   founders: [
     { 
@@ -52,19 +47,17 @@ const wallOfFameData = {
   contributors: [
     { name: "Sedang Dicari !", role: "Content Partner", desc: "Menyumbangkan kurikulum SD/SMP/SMA." },
     { name: "Sedang Dicari !", role: "Video Contributor", desc: "Donasi video pembahasan materi." },
-    { name: "Sedang Dicari !", role: "Learning Contributor", desc: "Donasi materi matematika." },
+    { name: "Sedang Dicari !", role: "Graphic Designer", desc: "Membuat tampilan menjadi lebih friendly." },
   ],
   tutors: [
-    { name: "Sedang Dicari !", role: "Super Tutor", desc: "Spesialisasi: Materi Sekolah Dasar" },
-    { name: "Sedang Dicari !", role: "Super Tutor", desc: "Spesialisasi: Materi Sekolah Menengah" },
+    { name: "Sedang Dicari !", role: "Super Tutor", desc: "Spesialisasi: Materi Sekolah Dasar/Menengah" },
+    { name: "Sedang Dicari !", role: "Super Tutor", desc: "Membantu mengejar anak yang tertinggal materi" },
     { name: "Sedang Dicari !", role: "Mentor", desc: "Membimbing anak penyandang disabilitas." },
     { name: "Sedang Dicari !", role: "Mentor", desc: "Membimbing persiapan olimpiade." },
   ]
 };
 
-/* =============================================================================
-  DATA KURIKULUM + SOAL LATIHAN (QUIZ)
-  ============================================================================= */
+/* DATA KURIKULUM + SOAL LATIHAN (QUIZ) */
 const curriculumData = {
   SD: {
     theme: "from-green-400 to-emerald-600",
@@ -159,7 +152,6 @@ const curriculumData = {
         nodes: [
           { 
             id: "smp7-1", title: "Bilangan & Himpunan", desc: "Bilangan bulat & Diagram Venn.", difficulty: "Beginner", resources: [],
-            // CONTOH SOAL SMP
             quiz: [
               { question: "Hasil dari -5 + 12 adalah...", options: ["-7", "7", "17", "-17"], correctAnswer: 1 },
               { question: "Kumpulan hewan berkaki empat adalah contoh...", options: ["Himpunan", "Bukan Himpunan", "Bilangan", "Aljabar"], correctAnswer: 0 }
@@ -207,7 +199,6 @@ const curriculumData = {
         nodes: [
           { 
             id: "sma10-1", title: "Eksponen & Logaritma", desc: "Sifat pangkat.", difficulty: "Medium", resources: [],
-            // CONTOH SOAL SMA
             quiz: [
               { question: "2 pangkat 3 sama dengan...", options: ["6", "8", "9", "5"], correctAnswer: 1 },
               { question: "Invers dari eksponen adalah...", options: ["Logaritma", "Matriks", "Vektor", "Limit"], correctAnswer: 0 }
@@ -309,7 +300,7 @@ export default function MathMaster() {
     e.preventDefault();
     if (!inputMessage.trim()) return;
 
-    // Cek dulu apakah kunci ada sebelum kirim
+    // Cek KEY API
     if (!GEMINI_API_KEY) {
       alert("ERROR: API Key tidak ditemukan! Pastikan Anda sudah mengatur 'VITE_GEMINI_API_KEY' di Netlify Environment Variables dan melakukan Redeploy (Clear Cache).");
       return;
@@ -321,7 +312,7 @@ export default function MathMaster() {
     setIsLoading(true);
 
     try {
-      // KITA GUNAKAN 'gemini-2.5-pro' AGAR LEBIH AMAN DARI VERSIONING
+      // AI gemini-2.5-pro Ver
       const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.5-pro:generateContent?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -516,7 +507,7 @@ export default function MathMaster() {
             </div>
             {/* ROADMAP TREE */}
             <div className="relative">
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-64 w-1 md:-ml-0.5 bg-slate-800 rounded-full"><div className={`h-full w-full bg-gradient-to-b ${levelData.theme} opacity-30`}></div></div>
+              <div className="absolute left-4 md:left-1/2 top-0 bottom-36 w-1 md:-ml-0.5 bg-slate-800 rounded-full"><div className={`h-full w-full bg-gradient-to-b ${levelData.theme} opacity-30`}></div></div>
               
               <div className="space-y-12">
                 {currentNodes.map((node, index) => {
