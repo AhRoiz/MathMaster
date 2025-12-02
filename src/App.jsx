@@ -12,14 +12,56 @@ import {
   ============================================================================= */
 const phoneNumber = "6281234567890"; // GANTI NOMOR WA KAMU
 
-// --- [PENTING: KONFIGURASI API KEY] ---
-// Baris di bawah ini digunakan untuk mengambil API Key dari .env di Laptop/Netlify.
-// Saya jadikan komentar dulu agar tidak ERROR di preview editor ini.
-// SAAT DI VS CODE / NETLIFY: Hapus tanda // di depan baris berikut:
-
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
-// Untuk sementara (agar preview jalan), kita set kosong
+// LOGIKA CHAT DENGAN GEMINI API (REVISI MODEL STABIL)
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    if (!inputMessage.trim()) return;
+
+    if (!GEMINI_API_KEY) {
+      alert("ERROR: API Key belum terbaca. Pastikan file .env sudah benar dan server direstart.");
+      return;
+    }
+
+    const newUserMsg = { role: 'user', text: inputMessage };
+    setChatMessages(prev => [...prev, newUserMsg]);
+    setInputMessage("");
+    setIsLoading(true);
+
+    try {
+      // KITA GANTI KE 'gemini-pro' AGAR LEBIH STABIL
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: `Jawablah pertanyaan matematika ini dengan bahasa Indonesia yang ramah dan mudah dimengerti untuk siswa sekolah: ${inputMessage}` }] }]
+        })
+      });
+
+      const data = await response.json();
+      
+      if (data.error) {
+        console.error("Google API Error:", data.error);
+        throw new Error(`Google menolak: ${data.error.message}`);
+      }
+
+      if (!data.candidates || !data.candidates[0].content) {
+        throw new Error("Tidak ada jawaban dari AI.");
+      }
+
+      const aiResponseText = data.candidates[0].content.parts[0].text;
+      setChatMessages(prev => [...prev, { role: 'ai', text: aiResponseText }]);
+
+    } catch (error) {
+      console.error("App Error:", error);
+      alert(`Gagal: ${error.message}`);
+      setChatMessages(prev => [...prev, { role: 'ai', text: "Maaf, ada kendala koneksi ke otak AI." }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
 /* =============================================================================
   DATA WALL OF FAME
   ============================================================================= */
