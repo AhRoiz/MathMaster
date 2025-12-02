@@ -30,7 +30,7 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
     setIsLoading(true);
 
     try {
-      // KITA GANTI KE 'gemini-pro' AGAR LEBIH STABIL
+      // Gunakan KE 'gemini-pro' AGAR LEBIH STABIL
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
