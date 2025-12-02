@@ -298,8 +298,8 @@ export default function MathMaster() {
     setIsLoading(true);
 
     try {
-      // KITA GUNAKAN 'gemini-1.5-flash' AGAR LEBIH AMAN DARI VERSIONING
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-001:generateContent?key=${GEMINI_API_KEY}`, {
+      // KITA GUNAKAN 'gemini-1.5-pro-001' AGAR LEBIH AMAN DARI VERSIONING
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro-001:generateContent?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
