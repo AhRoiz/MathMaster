@@ -12,8 +12,14 @@ import {
   ============================================================================= */
 const phoneNumber = "6281234567890"; // GANTI NOMOR WA KAMU
 
-// --- [AMAN] MENGAMBIL API KEY DARI ENVIRONMENT VARIABLES ---
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+// --- [PENTING: KONFIGURASI API KEY] ---
+// Kode di bawah ini saya matikan (comment) agar tidak error di PREVIEW editor ini.
+// SAAT DI VS CODE / NETLIFY, LAKUKAN INI:
+// 1. Hapus tanda "//" di depan baris "const GEMINI_API_KEY = import.meta..."
+// 2. Tambahkan tanda "//" di depan baris "const GEMINI_API_KEY = "";"
+
+// const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const GEMINI_API_KEY = ""; // Placeholder sementara agar preview jalan
 
 /* =============================================================================
   DATA WALL OF FAME
