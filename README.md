@@ -25,7 +25,7 @@
   <img src="https://img.shields.io/badge/Powered%20by-Gemini%202.5%20Pro-8A2BE2?style=for-the-badge&logo=google&logoColor=white" alt="Gemini" />
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/>
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
-</p>
+</p> </div>
 
 
 <br />
