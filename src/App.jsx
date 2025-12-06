@@ -75,66 +75,274 @@ const curriculumData = {
             title: "Mengenal Bilangan Cacah",
             desc: "Membaca dan menulis lambang bilangan 1-20 hingga 99.",
             difficulty: "Beginner",
-            resources: [],
+            resources: [
+              {
+              type: "youtube",       
+              title: "Mengenal Bilangan Cacah",  
+              url: "https://youtu.be/UKIlsyeco0k?si=l-GVVZEFzfixrMyt"     
+            },
+            {
+              type: "youtube",       
+              title: "Belajar Berhitung 1 sampai 99",  
+              url: "https://youtu.be/wkck2u0LhZk?si=Mw5iWfOpyPY_iSMQ"  
+            }
+          ],
             quiz: [
               { question: "Lambang bilangan dari sepuluh adalah...", options: ["1", "10", "100", "01"], correctAnswer: 1 },
               { question: "Angka setelah 5 adalah...", options: ["4", "7", "6", "3"], correctAnswer: 2 },
               { question: "Manakah yang lebih besar: 8 atau 3?", options: ["8", "3", "Sama saja", "Tidak tahu"], correctAnswer: 0 }
             ]
           },
-          { id: "sd1-2", title: "Operasi Hitung Sederhana", desc: "Penjumlahan & pengurangan dasar.", difficulty: "Easy", resources: [], quiz: [] },
-          { id: "sd1-3", title: "Pengukuran Tidak Baku", desc: "Jengkal & langkah.", difficulty: "Easy", resources: [], quiz: [] },
-          { id: "sd1-4", title: "Geometri Dasar", desc: "Segitiga, segiempat, lingkaran.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sd1-5", title: "Waktu & Jam", desc: "Nama hari & jam utuh.", difficulty: "Medium", resources: [], quiz: [] }
+          { 
+            id: "sd1-2", 
+            title: "Operasi Hitung Sederhana", 
+            desc: "Penjumlahan & pengurangan dasar.", 
+            difficulty: "Easy", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd1-3", 
+            title: "Pengukuran Tidak Baku", 
+            desc: "Jengkal & langkah.", 
+            difficulty: "Easy", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd1-4", 
+            title: "Geometri Dasar", 
+            desc: "Segitiga, segiempat, lingkaran.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd1-5", 
+            title: "Waktu & Jam", 
+            desc: "Nama hari & jam utuh.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       2: {
         title: "Kelas 2: Pengembangan Operasi",
         nodes: [
-          { id: "sd2-1", title: "Bilangan sampai 999", desc: "Nilai tempat ratusan.", difficulty: "Easy", resources: [], quiz: [] },
-          { id: "sd2-2", title: "Penjumlahan Bersusun", desc: "Teknik menyimpan.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sd2-3", title: "Perkalian & Pembagian", desc: "Penjumlahan berulang.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd2-4", title: "Pengukuran Baku", desc: "Panjang (cm) & Berat (kg).", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sd2-5", title: "Uang & Waktu", desc: "Rupiah & durasi.", difficulty: "Medium", resources: [], quiz: [] }
+          { 
+            id: "sd2-1", 
+            title: "Bilangan sampai 999", 
+            desc: "Nilai tempat ratusan.", 
+            difficulty: "Easy", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd2-2", 
+            title: "Penjumlahan Bersusun", 
+            desc: "Teknik menyimpan.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd2-3", 
+            title: "Perkalian & Pembagian", 
+            desc: "Penjumlahan berulang.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd2-4", 
+            title: "Pengukuran Baku", 
+            desc: "Panjang (cm) & Berat (kg).", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd2-5", 
+            title: "Uang & Waktu", 
+            desc: "Rupiah & durasi.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       3: {
         title: "Kelas 3: Pecahan & Sifat Bangun",
         nodes: [
-          { id: "sd3-1", title: "Operasi Ribuan", desc: "Hitung campuran.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sd3-2", title: "Pecahan Sederhana", desc: "Mengenal 1/2, 1/4.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sd3-3", title: "Simetri & Sudut", desc: "Simetri lipat.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd3-4", title: "Keliling & Luas Persegi", desc: "Hitung keliling.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd3-5", title: "Data Sederhana", desc: "Diagram batang.", difficulty: "Medium", resources: [], quiz: [] }
+          { 
+            id: "sd3-1", 
+            title: "Operasi Ribuan", 
+            desc: "Hitung campuran.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd3-2", 
+            title: "Pecahan Sederhana", 
+            desc: "Mengenal 1/2, 1/4.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd3-3", 
+            title: "Simetri & Sudut", 
+            desc: "Simetri lipat.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: 
+            "sd3-4", 
+            title: "Keliling & Luas Persegi", 
+            desc: "Hitung keliling.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd3-5", 
+            title: "Data Sederhana", 
+            desc: "Diagram batang.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       4: {
         title: "Kelas 4: Bilangan Besar",
         nodes: [
-          { id: "sd4-1", title: "Bilangan Besar", desc: "Jutaan.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sd4-2", title: "KPK & FPB", desc: "Faktor & Kelipatan.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd4-3", title: "Pecahan Senilai", desc: "Desimal & Persen.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd4-4", title: "Geometri Sudut", desc: "Busur derajat.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd4-5", title: "Luas Segitiga", desc: "Alas x Tinggi / 2.", difficulty: "Expert", resources: [], quiz: [] }
+          { 
+            id: "sd4-1", 
+            title: "Bilangan Besar", 
+            desc: "Jutaan.",
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd4-2", 
+            title: "KPK & FPB", 
+            desc: "Faktor & Kelipatan.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd4-3",
+             title: "Pecahan Senilai", 
+             desc: "Desimal & Persen.", 
+             difficulty: "Hard", 
+             resources: [], 
+             quiz: [] 
+            },
+          { 
+            id: "sd4-4",
+            title: "Geometri Sudut", 
+            desc: "Busur derajat.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd4-5", 
+            title: "Luas Segitiga", 
+            desc: "Alas x Tinggi / 2.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       5: {
         title: "Kelas 5: Perbandingan",
         nodes: [
-          { id: "sd5-1", title: "Operasi Pecahan", desc: "Kali bagi pecahan.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd5-2", title: "Skala & Kecepatan", desc: "Jarak peta.", difficulty: "Expert", resources: [], quiz: [] },
-          { id: "sd5-3", title: "Bangun Ruang", desc: "Kubus & Balok.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd5-4", title: "Volume", desc: "Pangkat tiga.", difficulty: "Expert", resources: [], quiz: [] }
+          { 
+            id: "sd5-1", 
+            title: "Operasi Pecahan", 
+            desc: "Kali bagi pecahan.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd5-2", 
+            title: "Skala & Kecepatan", 
+            desc: "Jarak peta.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd5-3", 
+            title: "Bangun Ruang", 
+            desc: "Kubus & Balok.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd5-4", 
+            title: "Volume", 
+            desc: "Pangkat tiga.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       6: {
         title: "Kelas 6: Persiapan SMP",
         nodes: [
-          { id: "sd6-1", title: "Bilangan Bulat Negatif", desc: "Positif & Negatif.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd6-2", title: "Lingkaran", desc: "Luas & Keliling Pi.", difficulty: "Expert", resources: [], quiz: [] },
-          { id: "sd6-3", title: "Geometri Gabungan", desc: "Volume gabungan.", difficulty: "Expert", resources: [], quiz: [] },
-          { id: "sd6-4", title: "Statistika", desc: "Mean, Median, Modus.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sd6-5", title: "Sistem Koordinat", desc: "Titik pada koordinat Kartesius.", difficulty: "Medium", resources: [], quiz: [] }
+          { 
+            id: "sd6-1", 
+            title: "Bilangan Bulat Negatif", 
+            desc: "Positif & Negatif.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd6-2", 
+            title: "Lingkaran", 
+            desc: "Luas & Keliling Pi.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd6-3", 
+            title: "Geometri Gabungan", 
+            desc: "Volume gabungan.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd6-4", 
+            title: "Statistika", 
+            desc: "Mean, Median, Modus.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sd6-5", 
+            title: "Sistem Koordinat", 
+            desc: "Titik pada koordinat Kartesius.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       }
     }
@@ -157,31 +365,136 @@ const curriculumData = {
               { question: "Kumpulan hewan berkaki empat adalah contoh...", options: ["Himpunan", "Bukan Himpunan", "Bilangan", "Aljabar"], correctAnswer: 0 }
             ]
           },
-          { id: "smp7-2", title: "Aljabar Dasar", desc: "Variabel & Konstanta.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "smp7-3", title: "PLSV", desc: "Persamaan Linear.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "smp7-4", title: "Aritmetika Sosial", desc: "Untung Rugi.", difficulty: "Easy", resources: [], quiz: [] },
-          { id: "smp7-5", title: "Garis & Sudut", desc: "Hubungan antar sudut.", difficulty: "Hard", resources: [], quiz: [] }
+          { 
+            id: "smp7-2", 
+            title: "Aljabar Dasar", 
+            desc: "Variabel & Konstanta.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp7-3", 
+            title: "PLSV", 
+            desc: "Persamaan Linear.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp7-4", 
+            title: "Aritmetika Sosial", 
+            desc: "Untung Rugi.", 
+            difficulty: "Easy", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp7-5", 
+            title: "Garis & Sudut", 
+            desc: "Hubungan antar sudut.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       8: {
         title: "Kelas 8: Relasi & Geometri",
         nodes: [
-          { id: "smp8-1", title: "Pola Bilangan", desc: "Barisan aritmatika.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "smp8-2", title: "Koordinat Kartesius", desc: "Sumbu X dan Y.", difficulty: "Easy", resources: [], quiz: [] },
-          { id: "smp8-3", title: "Relasi Fungsi", desc: "Domain Kodomain.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "smp8-4", title: "Persamaan Garis", desc: "Gradien.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "smp8-5", title: "Pythagoras", desc: "Segitiga siku-siku.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "smp8-6", title: "Lingkaran", desc: "Sudut pusat.", difficulty: "Expert", resources: [], quiz: [] }
+          { 
+            id: "smp8-1", 
+            title: "Pola Bilangan", 
+            desc: "Barisan aritmatika.", 
+            difficulty: "Medium", 
+            resources: [],
+            quiz: [] 
+          },
+          { 
+            id: "smp8-2", 
+            title: "Koordinat Kartesius", 
+            desc: "Sumbu X dan Y.", 
+            difficulty: "Easy", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp8-3", 
+            title: "Relasi Fungsi", 
+            desc: "Domain Kodomain.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp8-4", 
+            title: "Persamaan Garis", 
+            desc: "Gradien.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp8-5", 
+            title: "Pythagoras", 
+            desc: "Segitiga siku-siku.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp8-6", 
+            title: "Lingkaran", 
+            desc: "Sudut pusat.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       9: {
         title: "Kelas 9: Pangkat & Ruang",
         nodes: [
-          { id: "smp9-1", title: "Pangkat & Akar", desc: "Eksponen.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "smp9-2", title: "Persamaan Kuadrat", desc: "Akar persamaan.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "smp9-3", title: "Transformasi", desc: "Refleksi Rotasi.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "smp9-4", title: "Kesebangunan", desc: "Kongruen.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "smp9-5", title: "Bangun Lengkung", desc: "Tabung Kerucut.", difficulty: "Expert", resources: [], quiz: [] }
+          { 
+            id: "smp9-1", 
+            title: "Pangkat & Akar", 
+            desc: "Eksponen.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp9-2", 
+            title: "Persamaan Kuadrat", 
+            desc: "Akar persamaan.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp9-3", 
+            title: "Transformasi", 
+            desc: "Refleksi Rotasi.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp9-4", 
+            title: "Kesebangunan", 
+            desc: "Kongruen.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "smp9-5", 
+            title: "Bangun Lengkung", 
+            desc: "Tabung Kerucut.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       }
     }
@@ -198,35 +511,128 @@ const curriculumData = {
         title: "Kelas 10: Fondasi Lanjut",
         nodes: [
           { 
-            id: "sma10-1", title: "Eksponen & Logaritma", desc: "Sifat pangkat.", difficulty: "Medium", resources: [],
+            id: "sma10-1", 
+            title: "Eksponen & Logaritma", 
+            desc: "Sifat pangkat.", 
+            difficulty: "Medium", 
+            resources: [],
             quiz: [
               { question: "2 pangkat 3 sama dengan...", options: ["6", "8", "9", "5"], correctAnswer: 1 },
               { question: "Invers dari eksponen adalah...", options: ["Logaritma", "Matriks", "Vektor", "Limit"], correctAnswer: 0 }
             ]
           },
-          { id: "sma10-2", title: "SPLTV", desc: "3 Variabel.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sma10-3", title: "Fungsi Komposisi", desc: "f(g(x)).", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sma10-4", title: "Trigonometri", desc: "Sin Cos Tan.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sma10-5", title: "Vektor", desc: "Dot product.", difficulty: "Medium", resources: [], quiz: [] }
+          { 
+            id: "sma10-2", 
+            title: "SPLTV", 
+            desc: "3 Variabel.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sma10-3", 
+            title: "Fungsi Komposisi", 
+            desc: "f(g(x)).", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sma10-4", 
+            title: "Trigonometri", 
+            desc: "Sin Cos Tan.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sma10-5", 
+            title: "Vektor", 
+            desc: "Dot product.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       11: {
         title: "Kelas 11: Kalkulus Dasar",
         nodes: [
-          { id: "sma11-1", title: "Matriks", desc: "Determinan.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sma11-2", title: "Barisan Deret", desc: "Tak hingga.", difficulty: "Medium", resources: [], quiz: [] },
-          { id: "sma11-3", title: "Limit", desc: "Mendekati nilai.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sma11-4", title: "Turunan", desc: "Diferensial.", difficulty: "Expert", resources: [], quiz: [] },
-          { id: "sma11-5", title: "Lingkaran Analitik", desc: "Persamaan lingkaran.", difficulty: "Expert", resources: [], quiz: [] }
+          { 
+            id: "sma11-1", 
+            title: "Matriks", 
+            desc: "Determinan.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sma11-2", 
+            title: "Barisan Deret", 
+            desc: "Tak hingga.", 
+            difficulty: "Medium", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sma11-3", 
+            title: "Limit", 
+            desc: "Mendekati nilai.", 
+            difficulty: "Hard", 
+            resources: [], quiz: [] 
+          },
+          { 
+            id: "sma11-4", 
+            title: "Turunan", 
+            desc: "Diferensial.", 
+            difficulty: "Expert", 
+            resources: [], quiz: [] 
+          },
+          { 
+            id: "sma11-5", 
+            title: "Lingkaran Analitik", 
+            desc: "Persamaan lingkaran.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       },
       12: {
         title: "Kelas 12: Kalkulus Lanjut",
         nodes: [
-          { id: "sma12-1", title: "Dimensi Tiga", desc: "Jarak titik bidang.", difficulty: "Expert", resources: [], quiz: [] },
-          { id: "sma12-2", title: "Integral", desc: "Luas daerah.", difficulty: "God Tier", resources: [], quiz: [] },
-          { id: "sma12-3", title: "Statistika", desc: "Data kelompok.", difficulty: "Hard", resources: [], quiz: [] },
-          { id: "sma12-4", title: "Peluang", desc: "Kombinasi.", difficulty: "Hard", resources: [], quiz: [] }
+          { 
+            id: "sma12-1", 
+            title: "Dimensi Tiga", 
+            desc: "Jarak titik bidang.", 
+            difficulty: "Expert", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sma12-2", 
+            title: "Integral", 
+            desc: "Luas daerah.", 
+            difficulty: "God Tier", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sma12-3", 
+            title: "Statistika", 
+            desc: "Data kelompok.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          },
+          { 
+            id: "sma12-4", 
+            title: "Peluang", 
+            desc: "Kombinasi.", 
+            difficulty: "Hard", 
+            resources: [], 
+            quiz: [] 
+          }
         ]
       }
     }
