@@ -4,14 +4,42 @@ import {
   Star, X, Menu, BrainCircuit, TrendingUp, Award, ChevronDown, 
   MessageCircle, UserPlus, HelpCircle, Users, Crown, Heart, Trophy, Medal,
   PenTool, CheckCircle, XCircle, AlertCircle, CheckSquare, Square,
-  LogIn, LogOut, User, Edit3, Lock, Send, Bot, Loader2
+  Send, Bot, Loader2, Info, History, Calendar, Rocket, Map, Target
 } from 'lucide-react';
 
+/* =============================================================================
+  KONFIGURASI UTAMA
+  ============================================================================= */
 const phoneNumber = "6282120648685"; 
 
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+// --- [PENTING: KONFIGURASI API KEY] ---
+// Kode di bawah ini saya matikan (comment) agar tidak error di PREVIEW editor ini.
+// SAAT DI VS CODE / NETLIFY, LAKUKAN INI:
+// 1. Hapus tanda "//" di depan baris "const GEMINI_API_KEY = import.meta..."
+// 2. Tambahkan tanda "//" di depan baris "const GEMINI_API_KEY = "";"
 
-/* DATA WALL OF FAME */
+// const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const GEMINI_API_KEY = ""; // Placeholder sementara agar preview jalan
+
+/* =============================================================================
+  DATA UPDATE & ROADMAP (BARU)
+  ============================================================================= */
+const updateLog = [
+  { date: "7 Des 2025", title: "Open Access Release", desc: "Menghapus sistem login. MathMaster kini terbuka 100% gratis untuk seluruh pelajar Indonesia tanpa perlu mendaftar." },
+  { date: "5 Des 2025", title: "Fitur AI Tutor", desc: "Integrasi Gemini AI untuk membantu menjawab pertanyaan matematika siswa secara instan." },
+  { date: "1 Des 2025", title: "Peluncuran Beta", desc: "Rilis awal dengan materi SD, SMP, dan SMA beserta kuis interaktif." }
+];
+
+const futureRoadmap = [
+  "Mode Offline (PWA) agar bisa diakses tanpa sinyal",
+  "Penambahan Bank Soal Olimpiade (OSN)",
+  "Fitur 'Duel Matematika' (Multiplayer sederhana)",
+  "Video Pembahasan Original dari Tim MathMaster"
+];
+
+/* =============================================================================
+  DATA WALL OF FAME
+  ============================================================================= */
 const wallOfFameData = {
   founders: [
     { 
@@ -42,7 +70,6 @@ const wallOfFameData = {
       color: "from-amber-400 to-orange-600",
       image: "aldi.jpeg" 
     },
-
   ],
   contributors: [
     { name: "Sedang Dicari !", role: "Content Partner", desc: "Menyumbangkan kurikulum SD/SMP/SMA." },
@@ -57,7 +84,9 @@ const wallOfFameData = {
   ]
 };
 
-/* DATA KURIKULUM + SOAL LATIHAN (QUIZ) */
+/* =============================================================================
+  DATA KURIKULUM + SOAL LATIHAN (QUIZ)
+  ============================================================================= */
 const curriculumData = {
   SD: {
     theme: "from-green-400 to-emerald-600",
@@ -76,273 +105,72 @@ const curriculumData = {
             desc: "Membaca dan menulis lambang bilangan 1-20 hingga 99.",
             difficulty: "Beginner",
             resources: [
-              {
-              type: "youtube",       
-              title: "Mengenal Bilangan Cacah",  
-              url: "https://youtu.be/UKIlsyeco0k?si=l-GVVZEFzfixrMyt"     
-            },
-            {
-              type: "youtube",       
-              title: "Belajar Berhitung 1 sampai 99",  
-              url: "https://youtu.be/wkck2u0LhZk?si=Mw5iWfOpyPY_iSMQ"  
-            }
-          ],
+              { type: "youtube", title: "Mengenal Bilangan Cacah", url: "https://youtu.be/UKIlsyeco0k?si=l-GVVZEFzfixrMyt" },
+              { type: "youtube", title: "Belajar Berhitung 1 sampai 99", url: "https://youtu.be/wkck2u0LhZk?si=Mw5iWfOpyPY_iSMQ" },
+              { type: "youtube", title: "Pengurangan Tidak Baku", url: "https://youtu.be/TWeMxQnA7q8?si=1DwOijFm2HQAHZXd" },
+            ],
             quiz: [
               { question: "Lambang bilangan dari sepuluh adalah...", options: ["1", "10", "100", "01"], correctAnswer: 1 },
               { question: "Angka setelah 5 adalah...", options: ["4", "7", "6", "3"], correctAnswer: 2 },
               { question: "Manakah yang lebih besar: 8 atau 3?", options: ["8", "3", "Sama saja", "Tidak tahu"], correctAnswer: 0 }
             ]
           },
-          { 
-            id: "sd1-2", 
-            title: "Operasi Hitung Sederhana", 
-            desc: "Penjumlahan & pengurangan dasar.", 
-            difficulty: "Easy", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd1-3", 
-            title: "Pengukuran Tidak Baku", 
-            desc: "Jengkal & langkah.", 
-            difficulty: "Easy", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd1-4", 
-            title: "Geometri Dasar", 
-            desc: "Segitiga, segiempat, lingkaran.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd1-5", 
-            title: "Waktu & Jam", 
-            desc: "Nama hari & jam utuh.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sd1-2", title: "Operasi Hitung Sederhana", desc: "Penjumlahan & pengurangan dasar.", difficulty: "Easy", resources: [
+              { type: "youtube", title: "Bilangan sampai 99", url: "https://youtu.be/oNO4yUDYK4I?si=1bYNN5HqwFoxCfPU" },
+              { type: "youtube", title: "Penjumlahan Bersusun", url: "https://youtu.be/oNO4yUDYK4I?si=1bYNN5HqwFoxCfPU" },
+          ], quiz: [] },
+          { id: "sd1-3", title: "Pengukuran Tidak Baku", desc: "Jengkal & langkah.", difficulty: "Easy", resources: [], quiz: [] },
+          { id: "sd1-4", title: "Geometri Dasar", desc: "Segitiga, segiempat, lingkaran.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sd1-5", title: "Waktu & Jam", desc: "Nama hari & jam utuh.", difficulty: "Medium", resources: [], quiz: [] }
         ]
       },
       2: {
         title: "Kelas 2: Pengembangan Operasi",
         nodes: [
-          { 
-            id: "sd2-1", 
-            title: "Bilangan sampai 999", 
-            desc: "Nilai tempat ratusan.", 
-            difficulty: "Easy", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd2-2", 
-            title: "Penjumlahan Bersusun", 
-            desc: "Teknik menyimpan.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd2-3", 
-            title: "Perkalian & Pembagian", 
-            desc: "Penjumlahan berulang.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd2-4", 
-            title: "Pengukuran Baku", 
-            desc: "Panjang (cm) & Berat (kg).", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd2-5", 
-            title: "Uang & Waktu", 
-            desc: "Rupiah & durasi.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sd2-1", title: "Bilangan sampai 999", desc: "Nilai tempat ratusan.", difficulty: "Easy", resources: [], quiz: [] },
+          { id: "sd2-2", title: "Penjumlahan Bersusun", desc: "Teknik menyimpan.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sd2-3", title: "Perkalian & Pembagian", desc: "Penjumlahan berulang.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd2-4", title: "Pengukuran Baku", desc: "Panjang (cm) & Berat (kg).", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sd2-5", title: "Uang & Waktu", desc: "Rupiah & durasi.", difficulty: "Medium", resources: [], quiz: [] }
         ]
       },
       3: {
         title: "Kelas 3: Pecahan & Sifat Bangun",
         nodes: [
-          { 
-            id: "sd3-1", 
-            title: "Operasi Ribuan", 
-            desc: "Hitung campuran.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd3-2", 
-            title: "Pecahan Sederhana", 
-            desc: "Mengenal 1/2, 1/4.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd3-3", 
-            title: "Simetri & Sudut", 
-            desc: "Simetri lipat.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: 
-            "sd3-4", 
-            title: "Keliling & Luas Persegi", 
-            desc: "Hitung keliling.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd3-5", 
-            title: "Data Sederhana", 
-            desc: "Diagram batang.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sd3-1", title: "Operasi Ribuan", desc: "Hitung campuran.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sd3-2", title: "Pecahan Sederhana", desc: "Mengenal 1/2, 1/4.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sd3-3", title: "Simetri & Sudut", desc: "Simetri lipat.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd3-4", title: "Keliling & Luas Persegi", desc: "Hitung keliling.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd3-5", title: "Data Sederhana", desc: "Diagram batang.", difficulty: "Medium", resources: [], quiz: [] }
         ]
       },
       4: {
         title: "Kelas 4: Bilangan Besar",
         nodes: [
-          { 
-            id: "sd4-1", 
-            title: "Bilangan Besar", 
-            desc: "Jutaan.",
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd4-2", 
-            title: "KPK & FPB", 
-            desc: "Faktor & Kelipatan.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd4-3",
-             title: "Pecahan Senilai", 
-             desc: "Desimal & Persen.", 
-             difficulty: "Hard", 
-             resources: [], 
-             quiz: [] 
-            },
-          { 
-            id: "sd4-4",
-            title: "Geometri Sudut", 
-            desc: "Busur derajat.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd4-5", 
-            title: "Luas Segitiga", 
-            desc: "Alas x Tinggi / 2.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sd4-1", title: "Bilangan Besar", desc: "Jutaan.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sd4-2", title: "KPK & FPB", desc: "Faktor & Kelipatan.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd4-3", title: "Pecahan Senilai", desc: "Desimal & Persen.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd4-4", title: "Geometri Sudut", desc: "Busur derajat.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd4-5", title: "Luas Segitiga", desc: "Alas x Tinggi / 2.", difficulty: "Expert", resources: [], quiz: [] }
         ]
       },
       5: {
         title: "Kelas 5: Perbandingan",
         nodes: [
-          { 
-            id: "sd5-1", 
-            title: "Operasi Pecahan", 
-            desc: "Kali bagi pecahan.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd5-2", 
-            title: "Skala & Kecepatan", 
-            desc: "Jarak peta.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd5-3", 
-            title: "Bangun Ruang", 
-            desc: "Kubus & Balok.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd5-4", 
-            title: "Volume", 
-            desc: "Pangkat tiga.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sd5-1", title: "Operasi Pecahan", desc: "Kali bagi pecahan.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd5-2", title: "Skala & Kecepatan", desc: "Jarak peta.", difficulty: "Expert", resources: [], quiz: [] },
+          { id: "sd5-3", title: "Bangun Ruang", desc: "Kubus & Balok.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd5-4", title: "Volume", desc: "Pangkat tiga.", difficulty: "Expert", resources: [], quiz: [] }
         ]
       },
       6: {
         title: "Kelas 6: Persiapan SMP",
         nodes: [
-          { 
-            id: "sd6-1", 
-            title: "Bilangan Bulat Negatif", 
-            desc: "Positif & Negatif.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd6-2", 
-            title: "Lingkaran", 
-            desc: "Luas & Keliling Pi.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd6-3", 
-            title: "Geometri Gabungan", 
-            desc: "Volume gabungan.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd6-4", 
-            title: "Statistika", 
-            desc: "Mean, Median, Modus.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sd6-5", 
-            title: "Sistem Koordinat", 
-            desc: "Titik pada koordinat Kartesius.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sd6-1", title: "Bilangan Bulat Negatif", desc: "Positif & Negatif.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd6-2", title: "Lingkaran", desc: "Luas & Keliling Pi.", difficulty: "Expert", resources: [], quiz: [] },
+          { id: "sd6-3", title: "Geometri Gabungan", desc: "Volume gabungan.", difficulty: "Expert", resources: [], quiz: [] },
+          { id: "sd6-4", title: "Statistika", desc: "Mean, Median, Modus.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sd6-5", title: "Sistem Koordinat", desc: "Titik pada koordinat Kartesius.", difficulty: "Medium", resources: [], quiz: [] }
         ]
       }
     }
@@ -358,143 +186,32 @@ const curriculumData = {
       7: {
         title: "Kelas 7: Pengenalan Aljabar",
         nodes: [
-          { 
-            id: "smp7-1", title: "Bilangan & Himpunan", desc: "Bilangan bulat & Diagram Venn.", difficulty: "Beginner", resources: [],
-            quiz: [
-              { question: "Hasil dari -5 + 12 adalah...", options: ["-7", "7", "17", "-17"], correctAnswer: 1 },
-              { question: "Kumpulan hewan berkaki empat adalah contoh...", options: ["Himpunan", "Bukan Himpunan", "Bilangan", "Aljabar"], correctAnswer: 0 }
-            ]
-          },
-          { 
-            id: "smp7-2", 
-            title: "Aljabar Dasar", 
-            desc: "Variabel & Konstanta.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp7-3", 
-            title: "PLSV", 
-            desc: "Persamaan Linear.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp7-4", 
-            title: "Aritmetika Sosial", 
-            desc: "Untung Rugi.", 
-            difficulty: "Easy", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp7-5", 
-            title: "Garis & Sudut", 
-            desc: "Hubungan antar sudut.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "smp7-1", title: "Bilangan & Himpunan", desc: "Bilangan bulat & Diagram Venn.", difficulty: "Beginner", resources: [], quiz: [{ question: "Hasil dari -5 + 12 adalah...", options: ["-7", "7", "17", "-17"], correctAnswer: 1 }] },
+          { id: "smp7-2", title: "Aljabar Dasar", desc: "Variabel & Konstanta.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "smp7-3", title: "PLSV", desc: "Persamaan Linear.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "smp7-4", title: "Aritmetika Sosial", desc: "Untung Rugi.", difficulty: "Easy", resources: [], quiz: [] },
+          { id: "smp7-5", title: "Garis & Sudut", desc: "Hubungan antar sudut.", difficulty: "Hard", resources: [], quiz: [] }
         ]
       },
       8: {
         title: "Kelas 8: Relasi & Geometri",
         nodes: [
-          { 
-            id: "smp8-1", 
-            title: "Pola Bilangan", 
-            desc: "Barisan aritmatika.", 
-            difficulty: "Medium", 
-            resources: [],
-            quiz: [] 
-          },
-          { 
-            id: "smp8-2", 
-            title: "Koordinat Kartesius", 
-            desc: "Sumbu X dan Y.", 
-            difficulty: "Easy", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp8-3", 
-            title: "Relasi Fungsi", 
-            desc: "Domain Kodomain.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp8-4", 
-            title: "Persamaan Garis", 
-            desc: "Gradien.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp8-5", 
-            title: "Pythagoras", 
-            desc: "Segitiga siku-siku.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp8-6", 
-            title: "Lingkaran", 
-            desc: "Sudut pusat.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "smp8-1", title: "Pola Bilangan", desc: "Barisan aritmatika.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "smp8-2", title: "Koordinat Kartesius", desc: "Sumbu X dan Y.", difficulty: "Easy", resources: [], quiz: [] },
+          { id: "smp8-3", title: "Relasi Fungsi", desc: "Domain Kodomain.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "smp8-4", title: "Persamaan Garis", desc: "Gradien.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "smp8-5", title: "Pythagoras", desc: "Segitiga siku-siku.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "smp8-6", title: "Lingkaran", desc: "Sudut pusat.", difficulty: "Expert", resources: [], quiz: [] }
         ]
       },
       9: {
         title: "Kelas 9: Pangkat & Ruang",
         nodes: [
-          { 
-            id: "smp9-1", 
-            title: "Pangkat & Akar", 
-            desc: "Eksponen.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp9-2", 
-            title: "Persamaan Kuadrat", 
-            desc: "Akar persamaan.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp9-3", 
-            title: "Transformasi", 
-            desc: "Refleksi Rotasi.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp9-4", 
-            title: "Kesebangunan", 
-            desc: "Kongruen.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "smp9-5", 
-            title: "Bangun Lengkung", 
-            desc: "Tabung Kerucut.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "smp9-1", title: "Pangkat & Akar", desc: "Eksponen.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "smp9-2", title: "Persamaan Kuadrat", desc: "Akar persamaan.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "smp9-3", title: "Transformasi", desc: "Refleksi Rotasi.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "smp9-4", title: "Kesebangunan", desc: "Kongruen.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "smp9-5", title: "Bangun Lengkung", desc: "Tabung Kerucut.", difficulty: "Expert", resources: [], quiz: [] }
         ]
       }
     }
@@ -510,129 +227,30 @@ const curriculumData = {
       10: {
         title: "Kelas 10: Fondasi Lanjut",
         nodes: [
-          { 
-            id: "sma10-1", 
-            title: "Eksponen & Logaritma", 
-            desc: "Sifat pangkat.", 
-            difficulty: "Medium", 
-            resources: [],
-            quiz: [
-              { question: "2 pangkat 3 sama dengan...", options: ["6", "8", "9", "5"], correctAnswer: 1 },
-              { question: "Invers dari eksponen adalah...", options: ["Logaritma", "Matriks", "Vektor", "Limit"], correctAnswer: 0 }
-            ]
-          },
-          { 
-            id: "sma10-2", 
-            title: "SPLTV", 
-            desc: "3 Variabel.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sma10-3", 
-            title: "Fungsi Komposisi", 
-            desc: "f(g(x)).", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sma10-4", 
-            title: "Trigonometri", 
-            desc: "Sin Cos Tan.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sma10-5", 
-            title: "Vektor", 
-            desc: "Dot product.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sma10-1", title: "Eksponen & Logaritma", desc: "Sifat pangkat.", difficulty: "Medium", resources: [], quiz: [{ question: "2 pangkat 3 sama dengan...", options: ["6", "8", "9", "5"], correctAnswer: 1 }] },
+          { id: "sma10-2", title: "SPLTV", desc: "3 Variabel.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sma10-3", title: "Fungsi Komposisi", desc: "f(g(x)).", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sma10-4", title: "Trigonometri", desc: "Sin Cos Tan.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sma10-5", title: "Vektor", desc: "Dot product.", difficulty: "Medium", resources: [], quiz: [] }
         ]
       },
       11: {
         title: "Kelas 11: Kalkulus Dasar",
         nodes: [
-          { 
-            id: "sma11-1", 
-            title: "Matriks", 
-            desc: "Determinan.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sma11-2", 
-            title: "Barisan Deret", 
-            desc: "Tak hingga.", 
-            difficulty: "Medium", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sma11-3", 
-            title: "Limit", 
-            desc: "Mendekati nilai.", 
-            difficulty: "Hard", 
-            resources: [], quiz: [] 
-          },
-          { 
-            id: "sma11-4", 
-            title: "Turunan", 
-            desc: "Diferensial.", 
-            difficulty: "Expert", 
-            resources: [], quiz: [] 
-          },
-          { 
-            id: "sma11-5", 
-            title: "Lingkaran Analitik", 
-            desc: "Persamaan lingkaran.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sma11-1", title: "Matriks", desc: "Determinan.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sma11-2", title: "Barisan Deret", desc: "Tak hingga.", difficulty: "Medium", resources: [], quiz: [] },
+          { id: "sma11-3", title: "Limit", desc: "Mendekati nilai.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sma11-4", title: "Turunan", desc: "Diferensial.", difficulty: "Expert", resources: [], quiz: [] },
+          { id: "sma11-5", title: "Lingkaran Analitik", desc: "Persamaan lingkaran.", difficulty: "Expert", resources: [], quiz: [] }
         ]
       },
       12: {
         title: "Kelas 12: Kalkulus Lanjut",
         nodes: [
-          { 
-            id: "sma12-1", 
-            title: "Dimensi Tiga", 
-            desc: "Jarak titik bidang.", 
-            difficulty: "Expert", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sma12-2", 
-            title: "Integral", 
-            desc: "Luas daerah.", 
-            difficulty: "God Tier", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sma12-3", 
-            title: "Statistika", 
-            desc: "Data kelompok.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          },
-          { 
-            id: "sma12-4", 
-            title: "Peluang", 
-            desc: "Kombinasi.", 
-            difficulty: "Hard", 
-            resources: [], 
-            quiz: [] 
-          }
+          { id: "sma12-1", title: "Dimensi Tiga", desc: "Jarak titik bidang.", difficulty: "Expert", resources: [], quiz: [] },
+          { id: "sma12-2", title: "Integral", desc: "Luas daerah.", difficulty: "God Tier", resources: [], quiz: [] },
+          { id: "sma12-3", title: "Statistika", desc: "Data kelompok.", difficulty: "Hard", resources: [], quiz: [] },
+          { id: "sma12-4", title: "Peluang", desc: "Kombinasi.", difficulty: "Hard", resources: [], quiz: [] }
         ]
       }
     }
@@ -650,10 +268,7 @@ export default function MathMaster() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [completedNodes, setCompletedNodes] = useState({});
 
-  // STATE LOGIN & CHAT
-  const [user, setUser] = useState(null); 
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [loginForm, setLoginForm] = useState({ name: "", role: "student" });
+  // STATE CHAT AI
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState([
     { role: 'ai', text: 'Halo! Saya AI MathMaster. Ada soal matematika yang bikin bingung? Tanyakan saja di sini!' }
@@ -666,9 +281,6 @@ export default function MathMaster() {
   useEffect(() => {
     const savedProgress = localStorage.getItem('mathmaster_progress');
     if (savedProgress) setCompletedNodes(JSON.parse(savedProgress));
-
-    const savedUser = localStorage.getItem('mathmaster_user');
-    if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
   // EFFECT: Auto scroll chat ke bawah
@@ -684,31 +296,13 @@ export default function MathMaster() {
     localStorage.setItem('mathmaster_progress', JSON.stringify(newProgress));
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (!loginForm.name) return alert("Nama harus diisi!");
-    setUser(loginForm);
-    localStorage.setItem('mathmaster_user', JSON.stringify(loginForm));
-    setIsLoginModalOpen(false);
-    setLoginForm({ name: "", role: "student" });
-  };
-
-  const handleLogout = () => {
-    if(window.confirm("Yakin ingin keluar?")) {
-      setUser(null);
-      localStorage.removeItem('mathmaster_user');
-      window.location.reload(); // Refresh agar bersih
-    }
-  };
-
-  // --- LOGIKA CHAT DENGAN GEMINI API (FINAL FIX: MODEL) ---
+  // --- LOGIKA CHAT DENGAN GEMINI API (VERSI FLEKSIBEL) ---
   const handleSendMessage = async (e) => {
     e.preventDefault();
     if (!inputMessage.trim()) return;
 
-    // Cek KEY API
     if (!GEMINI_API_KEY) {
-      alert("ERROR: API Key tidak ditemukan! Pastikan Anda sudah mengatur 'VITE_GEMINI_API_KEY' di Netlify Environment Variables dan melakukan Redeploy (Clear Cache).");
+      alert("ERROR: API Key tidak ditemukan! Pastikan file .env sudah benar dan server direstart.");
       return;
     }
 
@@ -718,7 +312,6 @@ export default function MathMaster() {
     setIsLoading(true);
 
     try {
-      // AI gemini-2.5-pro Ver
       const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.5-pro:generateContent?key=${GEMINI_API_KEY}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -729,10 +322,9 @@ export default function MathMaster() {
 
       const data = await response.json();
       
-      // DEBUG: Log error di console browser (F12) untuk inspeksi
       if (data.error) {
         console.error("Google API Error Detail:", data.error);
-        throw new Error(`Google menolak: ${data.error.message}`);
+        throw new Error(`Google menolak (${data.error.code}): ${data.error.message}`);
       }
 
       if (!data.candidates || !data.candidates[0].content) {
@@ -827,38 +419,19 @@ export default function MathMaster() {
           <div className="hidden md:flex gap-6 text-sm font-medium text-slate-400 items-center">
             <button onClick={() => handleNavClick('home')} className={`transition-colors ${activePage === 'home' ? 'text-cyan-400 font-bold' : 'hover:text-cyan-400'}`}>Beranda</button>
             <button onClick={() => { handleNavClick('home'); setTimeout(() => document.getElementById('roadmap')?.scrollIntoView({behavior: 'smooth'}), 100); }} className="hover:text-cyan-400 transition-colors">Peta Belajar</button>
-            
             <button onClick={() => handleNavClick('practice')} className={`transition-colors flex items-center gap-2 ${activePage === 'practice' ? 'text-emerald-400 font-bold' : 'hover:text-emerald-400'}`}>
               <PenTool className="w-4 h-4" /> Latihan Soal
             </button>
-
             <button onClick={() => handleNavClick('wall')} className={`transition-colors flex items-center gap-2 ${activePage === 'wall' ? 'text-yellow-400 font-bold' : 'hover:text-yellow-400'}`}>
               <Trophy className="w-4 h-4" /> Wall of Fame
             </button>
-
-            {/* STATUS USER / LOGIN BUTTON */}
-            <div className="ml-4 pl-4 border-l border-slate-700">
-              {user ? (
-                <div className="flex items-center gap-3">
-                  <div className="text-right hidden lg:block">
-                    <div className="text-white font-bold text-xs">{user.name}</div>
-                    <div className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full inline-block ${user.role === 'mentor' ? 'bg-purple-500 text-white' : 'bg-emerald-500 text-slate-900'}`}>
-                      {user.role === 'mentor' ? 'Mentor' : 'Siswa'}
-                    </div>
-                  </div>
-                  <button onClick={handleLogout} className="p-2 hover:bg-slate-800 rounded-full text-slate-400 hover:text-red-400 transition-colors" title="Logout">
-                    <LogOut className="w-5 h-5" />
-                  </button>
-                </div>
-              ) : (
-                <button 
-                  onClick={() => setIsLoginModalOpen(true)}
-                  className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-full border border-slate-600 transition-all text-xs font-bold"
-                >
-                  <LogIn className="w-4 h-4" /> Masuk
-                </button>
-              )}
-            </div>
+            {/* MENU BARU: TENTANG & UPDATE */}
+            <button onClick={() => handleNavClick('about')} className={`transition-colors flex items-center gap-2 ${activePage === 'about' ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`}>
+              <Info className="w-4 h-4" /> Tentang Kami
+            </button>
+            <button onClick={() => handleNavClick('updates')} className={`transition-colors flex items-center gap-2 ${activePage === 'updates' ? 'text-pink-400 font-bold' : 'hover:text-pink-400'}`}>
+              <History className="w-4 h-4" /> Update
+            </button>
           </div>
           <button className="md:hidden text-slate-300"><Menu /></button>
         </div>
@@ -870,11 +443,6 @@ export default function MathMaster() {
           <header className="relative pt-32 pb-20 px-6 overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/20 rounded-full blur-[120px] -z-10"></div>
             <div className="max-w-4xl mx-auto text-center">
-              {user && (
-                <div className="mb-6 animate-fade-in-up">
-                  <span className="text-xl font-light text-slate-400">Halo, {user.role === 'mentor' ? 'Mentor' : 'Siswa'} <span className="text-white font-bold">{user.name}</span>! 👋</span>
-                </div>
-              )}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 text-cyan-400 text-sm font-medium mb-6 animate-fade-in-up">
                 <Star className="w-4 h-4 fill-cyan-400" />
                 <span>100% Gratis untuk Pelajar Indonesia</span>
@@ -936,12 +504,6 @@ export default function MathMaster() {
                           
                           <div className="relative p-6">
                             <div className="absolute top-4 right-4 z-20 flex gap-2">
-                              {/* MENTOR ONLY BUTTON */}
-                              {user?.role === 'mentor' && (
-                                <div className="p-2 rounded-full bg-purple-500/20 text-purple-400" title="Edit Materi (Khusus Mentor)">
-                                  <Edit3 className="w-4 h-4" />
-                                </div>
-                              )}
                               <button
                                 onClick={(e) => { e.stopPropagation(); toggleCompletion(node.id); }}
                                 className={`p-2 rounded-full transition-all ${isCompleted ? 'text-emerald-400 bg-emerald-900/50 hover:bg-emerald-900' : 'text-slate-600 hover:text-slate-300 hover:bg-slate-700'}`}
@@ -1030,7 +592,7 @@ export default function MathMaster() {
                 <h3 className="text-xl font-bold text-white mb-2">{node.title}</h3>
                 <p className="text-slate-400 text-sm mb-6 flex-grow">{node.desc}</p>
                 
-                {/* BUTTON START QUIZ (CONDITIONAL FOR STUDENT) */}
+                {/* BUTTON START QUIZ */}
                 <button 
                   onClick={() => startQuiz(node)}
                   disabled={!node.quiz || node.quiz.length === 0}
@@ -1108,6 +670,85 @@ export default function MathMaster() {
         </section>
       )}
 
+      {/* --- HALAMAN TENTANG KAMI (ABOUT) --- */}
+      {activePage === 'about' && (
+        <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto min-h-screen animate-fade-in-up">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-medium mb-6">
+              <Info className="w-4 h-4" /><span>Tentang Kami</span>
+            </div>
+            <h1 className="text-5xl font-bold mb-6">Misi <span className="text-blue-400">MathMaster</span></h1>
+            <p className="text-slate-400 text-lg">Membangun generasi emas Indonesia yang cinta matematika.</p>
+          </div>
+          
+          <div className="bg-slate-800 border border-slate-700 p-8 rounded-2xl mb-12 shadow-xl">
+             <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2"><Target className="w-6 h-6 text-red-500" /> Visi & Misi</h3>
+             <p className="text-slate-300 leading-relaxed mb-6">
+               MathMaster hadir sebagai solusi atas kesenjangan pendidikan di Indonesia. Kami percaya bahwa setiap anak, di manapun mereka berada, berhak mendapatkan akses ke materi pembelajaran berkualitas tinggi secara gratis. Kami ingin menghapus stigma bahwa matematika itu sulit dan menakutkan, mengubahnya menjadi petualangan yang menyenangkan.
+             </p>
+             <p className="text-slate-300 leading-relaxed">
+               Platform ini dibangun dengan semangat "Open Source" dan kolaborasi. Siapapun bisa berkontribusi, baik itu kode, materi, maupun tenaga pengajar. Karena mencerdaskan bangsa adalah tugas kita bersama.
+             </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+             <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl text-center">
+                <Globe className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+                <h4 className="text-xl font-bold text-white mb-2">Akses Tanpa Batas</h4>
+                <p className="text-slate-400 text-sm">Gratis selamanya. Tanpa login, tanpa paywall, tanpa iklan yang mengganggu.</p>
+             </div>
+             <div className="bg-slate-800 border border-slate-700 p-6 rounded-2xl text-center">
+                <Users className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
+                <h4 className="text-xl font-bold text-white mb-2">Komunitas Peduli</h4>
+                <p className="text-slate-400 text-sm">Didukung oleh relawan pengajar dan kontributor dari seluruh Indonesia.</p>
+             </div>
+          </div>
+        </section>
+      )}
+
+      {/* --- HALAMAN UPDATE LOG --- */}
+      {activePage === 'updates' && (
+        <section className="pt-32 pb-20 px-6 max-w-4xl mx-auto min-h-screen animate-fade-in-up">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-sm font-medium mb-6">
+              <History className="w-4 h-4" /><span>Update Log</span>
+            </div>
+            <h1 className="text-5xl font-bold mb-6">Catatan <span className="text-pink-400">Perubahan</span></h1>
+            <p className="text-slate-400 text-lg">Perjalanan kami mengembangkan MathMaster dari waktu ke waktu.</p>
+          </div>
+
+          <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">
+             {updateLog.map((log, idx) => (
+                <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-slate-700 bg-slate-800 group-[.is-active]:bg-pink-500 text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                    <Calendar className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                    <div className="flex items-center justify-between space-x-2 mb-1">
+                      <div className="font-bold text-white">{log.title}</div>
+                      <time className="font-caveat font-medium text-pink-400">{log.date}</time>
+                    </div>
+                    <div className="text-slate-400 text-sm">{log.desc}</div>
+                  </div>
+                </div>
+             ))}
+          </div>
+
+          {/* ROADMAP MASA DEPAN */}
+          <div className="mt-20">
+             <h3 className="text-2xl font-bold text-white mb-8 flex items-center justify-center gap-3"><Rocket className="w-6 h-6 text-orange-500" /> Rencana Kedepan (Roadmap)</h3>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {futureRoadmap.map((plan, idx) => (
+                   <div key={idx} className="bg-slate-800/50 border border-slate-700 p-4 rounded-xl flex items-center gap-3">
+                      <Map className="w-5 h-5 text-orange-400" />
+                      <span className="text-slate-300 font-medium">{plan}</span>
+                   </div>
+                ))}
+             </div>
+          </div>
+        </section>
+      )}
+
       {/* FLOATING ACTION MENU */}
       <div className="fixed bottom-8 right-8 z-40 flex flex-col items-end gap-3">
         {isMenuOpen && (
@@ -1128,45 +769,23 @@ export default function MathMaster() {
             {/* Header */}
             <div className="px-6 py-4 border-b border-slate-700 flex justify-between items-center bg-slate-900">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400">
-                  <Bot className="w-6 h-6" />
-                </div>
+                <div className="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400"><Bot className="w-6 h-6" /></div>
                 <div><h3 className="text-lg font-bold text-white">AI Tutor MathMaster</h3><p className="text-slate-400 text-xs">Powered by Gemini</p></div>
               </div>
               <button onClick={() => setIsChatOpen(false)} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
             </div>
-
-            {/* Chat Area */}
             <div className="flex-1 p-6 overflow-y-auto space-y-4 bg-slate-800/50">
               {chatMessages.map((msg, idx) => (
                 <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed ${msg.role === 'user' ? 'bg-cyan-600 text-white rounded-br-none' : 'bg-slate-700 text-slate-200 rounded-bl-none'}`}>
-                    {msg.text}
-                  </div>
+                  <div className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed ${msg.role === 'user' ? 'bg-cyan-600 text-white rounded-br-none' : 'bg-slate-700 text-slate-200 rounded-bl-none'}`}>{msg.text}</div>
                 </div>
               ))}
-              {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-slate-700 p-4 rounded-2xl rounded-bl-none flex items-center gap-2 text-slate-400 text-sm">
-                    <Loader2 className="w-4 h-4 animate-spin" /> Sedang berpikir...
-                  </div>
-                </div>
-              )}
+              {isLoading && (<div className="flex justify-start"><div className="bg-slate-700 p-4 rounded-2xl rounded-bl-none flex items-center gap-2 text-slate-400 text-sm"><Loader2 className="w-4 h-4 animate-spin" /> Sedang berpikir...</div></div>)}
               <div ref={chatEndRef}></div>
             </div>
-
-            {/* Input Area */}
             <form onSubmit={handleSendMessage} className="p-4 bg-slate-900 border-t border-slate-700 flex gap-3">
-              <input 
-                type="text" 
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                placeholder="Ketik soal matematika di sini..."
-                className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-cyan-500 outline-none"
-              />
-              <button type="submit" disabled={isLoading || !inputMessage.trim()} className="p-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                <Send className="w-5 h-5" />
-              </button>
+              <input type="text" value={inputMessage} onChange={(e) => setInputMessage(e.target.value)} placeholder="Ketik soal matematika di sini..." className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-cyan-500 outline-none" />
+              <button type="submit" disabled={isLoading || !inputMessage.trim()} className="p-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-colors"><Send className="w-5 h-5" /></button>
             </form>
           </div>
         </div>
@@ -1256,28 +875,6 @@ export default function MathMaster() {
                 </button>
               </div>
             )}
-          </div>
-        </div>
-      )}
-
-      {/* --- MODAL LOGIN --- */}
-      {isLoginModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm" onClick={() => setIsLoginModalOpen(false)}></div>
-          <div className="relative w-full max-w-sm bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden animate-scale-in p-6">
-            <button onClick={() => setIsLoginModalOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
-            <h2 className="text-2xl font-bold text-white mb-6 text-center">Masuk ke MathMaster</h2>
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div><label className="block text-slate-400 text-sm mb-2">Nama Lengkap</label><input type="text" value={loginForm.name} onChange={(e) => setLoginForm({...loginForm, name: e.target.value})} className="w-full bg-slate-900 border border-slate-600 rounded-lg p-3 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all" placeholder="Contoh: Budi Santoso" required /></div>
-              <div>
-                <label className="block text-slate-400 text-sm mb-2">Masuk Sebagai</label>
-                <div className="grid grid-cols-2 gap-4">
-                  <button type="button" onClick={() => setLoginForm({...loginForm, role: 'student'})} className={`p-3 rounded-lg border flex flex-col items-center gap-2 transition-all ${loginForm.role === 'student' ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-500'}`}><User className="w-6 h-6" /><span className="text-sm font-bold">Siswa</span></button>
-                  <button type="button" onClick={() => setLoginForm({...loginForm, role: 'mentor'})} className={`p-3 rounded-lg border flex flex-col items-center gap-2 transition-all ${loginForm.role === 'mentor' ? 'bg-purple-500/20 border-purple-500 text-purple-400' : 'bg-slate-900 border-slate-700 text-slate-500 hover:border-slate-500'}`}><GraduationCap className="w-6 h-6" /><span className="text-sm font-bold">Mentor</span></button>
-                </div>
-              </div>
-              <button type="submit" className="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg shadow-lg transition-all mt-4">Mulai Belajar</button>
-            </form>
           </div>
         </div>
       )}
