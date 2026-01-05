@@ -12,7 +12,7 @@ import {
   ============================================================================= */
 const phoneNumber = "6282120648685"; 
 
-const GEMINI_API_KEY = ""; 
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 /* =============================================================================
   DATA UPDATE & ROADMAP (BARU)
