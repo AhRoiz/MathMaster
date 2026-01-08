@@ -26,6 +26,7 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
   DATA UPDATE & ROADMAP (BARU)
   ============================================================================= */
 const updateLog = [
+  {date : "7 Jan 2026", title: "Update Respon", desc: "Penyempurnaan respons AI agar lebih akurat, relevan dan memperbaiki penulisan pada jawaban yang diberikan oleh tutor AI MathMaster"},
   { date: "7 Des 2025", title: "Open Access Release", desc: "Menghapus sistem login. MathMaster kini terbuka 100% gratis untuk seluruh pelajar Indonesia tanpa perlu mendaftar." },
   { date: "5 Des 2025", title: "Fitur AI Tutor", desc: "Integrasi Gemini AI untuk membantu menjawab pertanyaan matematika siswa secara instan." },
   { date: "1 Des 2025", title: "Peluncuran Beta", desc: "Rilis awal dengan materi SD, SMP, dan SMA beserta kuis interaktif." }
