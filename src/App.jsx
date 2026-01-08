@@ -7,6 +7,14 @@ import {
   Send, Bot, Loader2, Info, History, Calendar, Rocket, Map, Target
 } from 'lucide-react';
 
+// --- IMPORT UNTUK FORMAT RUMUS MATEMATIKA ---
+import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
+// -------------------------------------------
+
+
 /* =============================================================================
   KONFIGURASI UTAMA
   ============================================================================= */
@@ -370,7 +378,15 @@ export default function MathMaster() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: `Jawablah pertanyaan matematika ini dengan bahasa Indonesia yang ramah dan mudah dimengerti untuk siswa sekolah: ${inputMessage}` }] }]
+          contents: [{ parts: [{ text: `Kamu adalah asisten matematika untuk siswa sekolah (SD-SMA). 
+        Jawablah pertanyaan ini: "${inputMessage}".
+        
+        ATURAN PENTING FORMAT MATEMATIKA:
+        1. Jika menulis rumus, WAJIB gunakan format LaTeX.
+        2. Gunakan tanda $ untuk rumus inline (contoh: $x^2$).
+        3. Gunakan tanda $$ untuk rumus baris baru (contoh: $$\\frac{1}{2}$$).
+        4. JANGAN gunakan backslash sebelum tanda pangkat (^) atau underscore (_). Contoh SALAH: \\^, \\_. Contoh BENAR: ^, _.
+        5. Jelaskan dengan bahasa Indonesia yang ramah dan mudah dimengerti.` }] }]
         })
       });
 
@@ -815,35 +831,69 @@ export default function MathMaster() {
         <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all hover:scale-110 ${isMenuOpen ? 'bg-red-500 rotate-45' : 'bg-cyan-500'}`}><span className="text-white font-bold text-2xl">{isMenuOpen ? <X /> : <HelpCircle />}</span></button>
       </div>
 
-      {/* --- MODAL CHAT AI --- */}
-      {isChatOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm" onClick={() => setIsChatOpen(false)}></div>
-          <div className="relative w-full max-w-lg bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden animate-scale-in flex flex-col h-[600px]">
-            {/* Header */}
-            <div className="px-6 py-4 border-b border-slate-700 flex justify-between items-center bg-slate-900">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400"><Bot className="w-6 h-6" /></div>
-                <div><h3 className="text-lg font-bold text-white">AI Tutor MathMaster</h3><p className="text-slate-400 text-xs">Powered by Gemini</p></div>
-              </div>
-              <button onClick={() => setIsChatOpen(false)} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
-            </div>
-            <div className="flex-1 p-6 overflow-y-auto space-y-4 bg-slate-800/50">
-              {chatMessages.map((msg, idx) => (
-                <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed ${msg.role === 'user' ? 'bg-cyan-600 text-white rounded-br-none' : 'bg-slate-700 text-slate-200 rounded-bl-none'}`}>{msg.text}</div>
-                </div>
-              ))}
-              {isLoading && (<div className="flex justify-start"><div className="bg-slate-700 p-4 rounded-2xl rounded-bl-none flex items-center gap-2 text-slate-400 text-sm"><Loader2 className="w-4 h-4 animate-spin" /> Sedang berpikir...</div></div>)}
-              <div ref={chatEndRef}></div>
-            </div>
-            <form onSubmit={handleSendMessage} className="p-4 bg-slate-900 border-t border-slate-700 flex gap-3">
-              <input type="text" value={inputMessage} onChange={(e) => setInputMessage(e.target.value)} placeholder="Ketik soal matematika di sini..." className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-cyan-500 outline-none" />
-              <button type="submit" disabled={isLoading || !inputMessage.trim()} className="p-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-colors"><Send className="w-5 h-5" /></button>
-            </form>
-          </div>
+      {/* --- MODAL CHAT AI (VERSI FINAL: ABSOLUTE POSITIONING) --- */}
+{isChatOpen && (
+  <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="absolute inset-0 bg-slate-900/90 backdrop-blur-sm" onClick={() => setIsChatOpen(false)}></div>
+    
+    {/* CONTAINER UTAMA: Tinggi dipaku 600px */}
+    <div 
+      className="relative w-full max-w-lg bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden animate-scale-in"
+      style={{ height: '600px' }} 
+    >
+      
+      {/* 1. HEADER (Dipaku di Atas) */}
+      <div 
+        className="absolute top-0 left-0 right-0 z-20 px-6 py-4 border-b border-slate-700 flex justify-between items-center bg-slate-900"
+        style={{ height: '70px' }} // Tinggi header tetap
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-cyan-500/20 rounded-full flex items-center justify-center text-cyan-400"><Bot className="w-6 h-6" /></div>
+          <div><h3 className="text-lg font-bold text-white">AI Tutor MathMaster</h3><p className="text-slate-400 text-xs">Powered by Gemini</p></div>
         </div>
-      )}
+        <button onClick={() => setIsChatOpen(false)} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white"><X className="w-5 h-5" /></button>
+      </div>
+
+      {/* 2. AREA CHAT (Dipaku di Tengah: Mengisi ruang antara Header dan Footer) */}
+      <div 
+        className="absolute left-0 right-0 z-10 bg-slate-800/50 overflow-y-auto p-6 space-y-4"
+        style={{ 
+          top: '70px',    // Mulai tepat di bawah Header
+          bottom: '80px'  // Berhenti tepat di atas Footer
+        }}
+      >
+        {chatMessages.map((msg, idx) => (
+          <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed overflow-hidden ${msg.role === 'user' ? 'bg-cyan-600 text-white rounded-br-none' : 'bg-slate-700 text-slate-200 rounded-bl-none'}`}>
+              <ReactMarkdown
+                children={msg.text}
+                remarkPlugins={[remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+                components={{
+                  p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />
+                }}
+              />
+            </div>
+          </div>
+        ))}
+        {isLoading && (<div className="flex justify-start"><div className="bg-slate-700 p-4 rounded-2xl rounded-bl-none flex items-center gap-2 text-slate-400 text-sm"><Loader2 className="w-4 h-4 animate-spin" /> Sedang berpikir...</div></div>)}
+        <div ref={chatEndRef}></div>
+      </div>
+
+      {/* 3. FOOTER / INPUT (Dipaku di Bawah) */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 z-20 bg-slate-900 border-t border-slate-700 p-4"
+        style={{ height: '80px' }} // Tinggi footer tetap
+      >
+        <form onSubmit={handleSendMessage} className="flex gap-3 h-full items-center">
+          <input type="text" value={inputMessage} onChange={(e) => setInputMessage(e.target.value)} placeholder="Ketik soal matematika di sini..." className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-white focus:ring-2 focus:ring-cyan-500 outline-none h-full" />
+          <button type="submit" disabled={isLoading || !inputMessage.trim()} className="h-full px-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"><Send className="w-5 h-5" /></button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+)}
 
       {/* --- MODAL MATERI --- */}
       {selectedNode && (
