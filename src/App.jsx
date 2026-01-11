@@ -49,7 +49,7 @@ const wallOfFameData = {
       role: "The Architect & Founder", 
       desc: "Pengembang utama, kurator, dan otak di balik MathMaster.",
       color: "from-amber-400 to-orange-600",
-      image: "ahmad.jpg" 
+      image: "ahmad.jpeg" 
     },
     { 
       name: "M. Nabil Fabian", 
