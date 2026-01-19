@@ -15,7 +15,7 @@ export default function FloatingMenu({ isOpen, setIsOpen, openChat, openCalculat
         <div className="flex flex-col gap-3 animate-fade-in-up">
           <button onClick={handleWhatsAppClick} className="flex items-center gap-3 px-5 py-3 bg-white text-slate-900 font-bold rounded-full shadow-lg hover:bg-slate-200 transition-colors"><span>Cari Tutor Privat</span><UserPlus className="w-5 h-5" /></button>
           {/* TOMBOL KALKULATOR */}
-          <button onClick={() => { openCalculator(); setIsOpen(false); }} className="flex items-center gap-3 px-5 py-3 bg-white text-slate-900 font-bold rounded-full shadow-lg hover:bg-slate-200 transition-colors"><span>Kalkulator Scientific</span><Calculator className="w-5 h-5" /></button>
+          <button onClick={() => { openCalculator(); setIsOpen(false); }} className="flex items-center gap-3 px-5 py-3 bg-white text-slate-900 font-bold rounded-full shadow-lg hover:bg-slate-200 transition-colors"><span>Kalkulator Scientific (Beta)</span><Calculator className="w-5 h-5" /></button>
           {/* TOMBOL AI CHAT */}
           <button onClick={() => { openChat(); setIsOpen(false); }} className="flex items-center gap-3 px-5 py-3 bg-white text-slate-900 font-bold rounded-full shadow-lg hover:bg-slate-200 transition-colors"><span>Tanya Soal (AI)</span><MessageCircle className="w-5 h-5" /></button>
         </div>
