@@ -11,10 +11,12 @@ export const updateLog = [
 ];
 
 export const futureRoadmap = [
-  "Mode Offline (PWA) agar bisa diakses tanpa sinyal",
-  "Penambahan Bank Soal Olimpiade (OSN)",
+  "Fitur Kreatif: Coretan Digital",
+  "Fitur AI Lanjut: Generate Soal Serupa",
   "Fitur 'Duel Matematika' (Multiplayer sederhana)",
-  "Video Pembahasan Original dari Tim MathMaster"
+  "Video Pembahasan Original dari Tim MathMaster",
+  "Aksesibilitas: Voice Mode untuk membantu berbicara dengan AI",
+  "Export Rangkuman ke PDF"
 ];
 
 export const wallOfFameData = {
