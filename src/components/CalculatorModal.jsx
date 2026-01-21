@@ -732,4 +732,5 @@ export default function CalculatorModal({ isOpen, onClose }) {
             </div>
         </div>
     );
+    
 }

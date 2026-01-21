@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import FloatingMenu from './components/FloatingMenu';
 import ChatModal from './components/ChatModal';
 import QuizModal from './components/QuizModal';
+import OlympiadQuizModal from './components/OlympiadQuizModal';
 import MaterialModal from './components/MaterialModal';
 import CalculatorModal from './components/CalculatorModal';
 
@@ -22,6 +23,7 @@ export default function App() {
   const [activeClass, setActiveClass] = useState(1);
   const [selectedNode, setSelectedNode] = useState(null); // Untuk Material
   const [quizNode, setQuizNode] = useState(null);         // Untuk Quiz
+  const [olympiadQuiz, setOlympiadQuiz] = useState(null); // Untuk Olympiad Quiz
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,6 +75,7 @@ export default function App() {
             activeClass={activeClass} setActiveClass={setActiveClass}
             curriculumData={curriculumData}
             onStartQuiz={setQuizNode}
+            onStartOlympiad={(level, quiz) => setOlympiadQuiz({ level, quiz })}
           />
         )}
 
@@ -107,6 +110,14 @@ export default function App() {
 
       {quizNode && (
         <QuizModal node={quizNode} onClose={() => setQuizNode(null)} />
+      )}
+
+      {olympiadQuiz && (
+        <OlympiadQuizModal
+          level={olympiadQuiz.level}
+          quizData={olympiadQuiz.quiz}
+          onClose={() => setOlympiadQuiz(null)}
+        />
       )}
 
       {/* Global Styles */}

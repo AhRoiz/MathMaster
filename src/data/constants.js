@@ -1,8 +1,9 @@
 export const phoneNumber = "6282120648685";
 
 export const updateLog = [
+  { date: "21 Jan 2026", title: "Quiz Latihan Soal", desc: "Penambahan fitur quiz latihan soal untuk membantu siswa memperkuat pemahaman materi dan latihan soal tingkat Olimpiade" },
   { date: "19 Jan 2026", title: "Penambahan Calculator", desc: "Penambahan fitur calculator scientific untuk membantu siswa dalam menghitung matematika" },
-  { date: "19 Jan 2026", title: "Upload Foto", desc: "Penambahan fitur upload foto untuk tanya AI untuk membantu siswa mengerjakan soal matematika" },
+  { date: "15 Jan 2026", title: "Upload Foto", desc: "Penambahan fitur upload foto untuk tanya AI untuk membantu siswa mengerjakan soal matematika" },
   { date: "7 Jan 2026", title: "Update Respon", desc: "Penyempurnaan respons AI agar lebih akurat, relevan dan memperbaiki penulisan pada jawaban yang diberikan oleh tutor AI MathMaster" },
   { date: "7 Des 2025", title: "Open Access Release", desc: "Menghapus sistem login. MathMaster kini terbuka 100% gratis untuk seluruh pelajar Indonesia tanpa perlu mendaftar." },
   { date: "5 Des 2025", title: "Fitur AI Tutor", desc: "Integrasi Gemini AI untuk membantu menjawab pertanyaan matematika siswa secara instan." },
@@ -28,21 +29,21 @@ export const wallOfFameData = {
     {
       name: "M. Nabil Fabian",
       role: "Founder",
-      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
+      desc: "Pencetus ide di balik MathMaster.",
       color: "from-amber-400 to-orange-600",
       image: "nabil.jpeg"
     },
     {
       name: "Ja'far Anafa Pulungan",
       role: "Founder",
-      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
+      desc: "Pencetus ide di balik MathMaster.",
       color: "from-amber-400 to-orange-600",
       image: "jafar.jpeg"
     },
     {
       name: "Aldi Ahidin",
       role: "Founder",
-      desc: "Pencetus ide, kurator dan otak di balik MathMaster.",
+      desc: "Pencetus ide balik MathMaster.",
       color: "from-amber-400 to-orange-600",
       image: "aldi.jpeg"
     },
