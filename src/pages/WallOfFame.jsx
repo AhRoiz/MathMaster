@@ -40,11 +40,19 @@ export default function WallOfFame() {
 
       {/* Contributors */}
       <div className="mb-20">
-          <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4"><Heart className="text-pink-500" /> Komunitas & Kontributor</h3>
+        <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4"><Heart className="text-pink-500" /> Komunitas & Kontributor</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {wallOfFameData.contributors.map((person, idx) => (
             <div key={idx} className="bg-slate-800/50 border border-slate-700 p-6 rounded-xl flex items-start gap-4 hover:bg-slate-800 transition-colors">
-              <div className="w-12 h-12 bg-pink-500/10 rounded-full flex items-center justify-center flex-shrink-0"><Users className="w-6 h-6 text-pink-500" /></div>
+              <div className="w-14 h-14 bg-gradient-to-br from-pink-400 to-rose-600 rounded-full p-0.5 flex-shrink-0 overflow-hidden">
+                {person.image ? (
+                  <img src={person.image} alt={person.name} className="w-full h-full object-cover rounded-full border-2 border-slate-900" />
+                ) : (
+                  <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
+                    <Users className="w-6 h-6 text-pink-500" />
+                  </div>
+                )}
+              </div>
               <div><h5 className="text-lg font-bold text-white">{person.name}</h5><p className="text-xs text-pink-400 font-bold mb-1">{person.role}</p><p className="text-slate-400 text-sm">{person.desc}</p></div>
             </div>
           ))}
@@ -53,11 +61,19 @@ export default function WallOfFame() {
 
       {/* Tutors */}
       <div className="mb-20">
-          <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4"><GraduationCap className="text-cyan-500" /> Para Mentor (Tutor)</h3>
+        <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-b border-slate-800 pb-4"><GraduationCap className="text-cyan-500" /> Para Mentor (Tutor)</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {wallOfFameData.tutors.map((person, idx) => (
             <div key={idx} className="bg-slate-800/50 border border-slate-700 p-6 rounded-xl text-center hover:border-cyan-500/50 transition-colors">
-              <div className="w-16 h-16 bg-cyan-500/10 rounded-full flex items-center justify-center mx-auto mb-4"><GraduationCap className="w-8 h-8 text-cyan-500" /></div>
+              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-teal-600 rounded-full p-0.5 mx-auto mb-4 overflow-hidden">
+                {person.image ? (
+                  <img src={person.image} alt={person.name} className="w-full h-full object-cover rounded-full border-2 border-slate-900" />
+                ) : (
+                  <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center">
+                    <GraduationCap className="w-8 h-8 text-cyan-500" />
+                  </div>
+                )}
+              </div>
               <h5 className="text-lg font-bold text-white mb-1">{person.name}</h5><p className="text-xs text-cyan-400 font-bold mb-2">{person.role}</p><p className="text-slate-400 text-xs">{person.desc}</p>
             </div>
           ))}

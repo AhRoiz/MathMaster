@@ -28,29 +28,26 @@ export const wallOfFameData = {
       color: "from-amber-400 to-orange-600",
       image: "ahmad.jpeg"
     },
+  ],
+  contributors: [
     {
       name: "M. Nabil Fabian",
       role: "Founder",
       desc: "Pencetus ide di balik MathMaster.",
-      color: "from-amber-400 to-orange-600",
       image: "nabil.jpeg"
     },
     {
       name: "Ja'far Anafa Pulungan",
       role: "Founder",
       desc: "Pencetus ide di balik MathMaster.",
-      color: "from-amber-400 to-orange-600",
       image: "jafar.jpeg"
     },
     {
       name: "Aldi Ahidin",
       role: "Founder",
       desc: "Pencetus ide balik MathMaster.",
-      color: "from-amber-400 to-orange-600",
       image: "aldi.jpeg"
     },
-  ],
-  contributors: [
     { name: "Sedang Dicari !", role: "Content Partner", desc: "Menyumbangkan kurikulum SD/SMP/SMA." },
     { name: "Sedang Dicari !", role: "Video Contributor", desc: "Donasi video pembahasan materi." },
     { name: "Sedang Dicari !", role: "Graphic Designer", desc: "Membuat tampilan menjadi lebih friendly." },
